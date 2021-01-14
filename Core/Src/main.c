@@ -32,7 +32,6 @@
 #include "stm32469i_discovery_qspi.h"
 #include "pppd.h"
 #include "https_client_task.h"
-#include "web.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,13 +96,6 @@ const osThreadAttr_t PPPoSTask_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 1024 * 4
 };
-/* Definitions for HTTPSClientTest */
-osThreadId_t HTTPSClientTestHandle;
-const osThreadAttr_t HTTPSClientTest_attributes = {
-  .name = "HTTPSClientTest",
-  .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
-};
 /* Definitions for web_queue_request */
 osMessageQueueId_t web_queue_requestHandle;
 const osMessageQueueAttr_t web_queue_request_attributes = {
@@ -113,6 +105,11 @@ const osMessageQueueAttr_t web_queue_request_attributes = {
 osMessageQueueId_t web_queue_responseHandle;
 const osMessageQueueAttr_t web_queue_response_attributes = {
   .name = "web_queue_response"
+};
+/* Definitions for https_response_event */
+osEventFlagsId_t https_response_eventHandle;
+const osEventFlagsAttr_t https_response_event_attributes = {
+  .name = "https_response_event"
 };
 /* USER CODE BEGIN PV */
 
@@ -136,7 +133,6 @@ static void MX_RTC_Init(void);
 void TouchGFX_Task(void *argument);
 void HTTPSClient_Task(void *argument);
 void PPPoS_Task(void *argument);
-void HTTPSClientTest_Task(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -231,17 +227,18 @@ int main(void)
   TouchGFXTaskHandle = osThreadNew(TouchGFX_Task, NULL, &TouchGFXTask_attributes);
 
   /* creation of HTTPSClientTask */
-  HTTPSClientTaskHandle = osThreadNew(HTTPSClient_Task, NULL, &HTTPSClientTask_attributes);
+  HTTPSClientTaskHandle = osThreadNew(HTTPSClient_Task, (void*) web_queue_requestHandle, &HTTPSClientTask_attributes);
 
   /* creation of PPPoSTask */
   PPPoSTaskHandle = osThreadNew(PPPoS_Task, NULL, &PPPoSTask_attributes);
 
-  /* creation of HTTPSClientTest */
-  HTTPSClientTestHandle = osThreadNew(HTTPSClientTest_Task, NULL, &HTTPSClientTest_attributes);
-
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
+
+  /* Create the event(s) */
+  /* creation of https_response_event */
+  https_response_eventHandle = osEventFlagsNew(&https_response_event_attributes);
 
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
@@ -1021,48 +1018,6 @@ __weak void PPPoS_Task(void *argument)
     osDelay(1);
   }
   /* USER CODE END PPPoS_Task */
-}
-
-/* USER CODE BEGIN Header_HTTPSClientTest_Task */
-/**
-* @brief Function implementing the HTTPSClientTest thread.
-* @param argument: Not used
-* @retval None
-*/
-char in_buff[4096];
-/* USER CODE END Header_HTTPSClientTest_Task */
-__weak void HTTPSClientTest_Task(void *argument)
-{
-  /* USER CODE BEGIN HTTPSClientTest_Task */
-//    osStatus_t res;
-    httpsClientState state;
-    struct web_pkg web;
-
-    /* wait until to connected pppos. */
-    do {
-        (void) osMessageQueueGet(web_queue_responseHandle, &state, (uint8_t *) 24, osWaitForever);
-    }while(state != httpc_READY);
-
-    while(1) {
-        web.uri = "http://192.168.3.1/wifi?cmd=scan";
-        web.type = GET;
-        web.in_buff = in_buff;
-        web.in_buff_size = sizeof(in_buff);
-        web.out_buff = NULL;
-        web.out_buff_size = 0;
-        (void)osMessageQueuePut(web_queue_requestHandle, &web, 24, 1000);
-        printf("HTTPS Request: %s\n", web.uri);
-        osMessageQueueGet(web_queue_responseHandle, &state, NULL, osWaitForever);
-        if (state == httpc_OK)
-            printf("HTTPS Response: %s\n", in_buff);
-        else
-            printf("HTTPS Response: %s\n", "ERROR!");
-        /* Infinite loop */
-        for (;;) {
-            osDelay(100);
-        }
-    }
-  /* USER CODE END HTTPSClientTest_Task */
 }
 
  /**

@@ -10,6 +10,12 @@ public:
     
     virtual ~ModelListener() {}
 
+    virtual void wifiScanningDone() {};
+
+    virtual void updateProgress(int value);
+
+    virtual void hideProgress();
+
     void bind(Model* m)
     {
         model = m;

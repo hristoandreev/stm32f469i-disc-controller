@@ -84,6 +84,7 @@ include_directories(Core/Inc
                     HTTPSClient/Socket
                     PPPoS/App
                     PPPoS/Target
+                    web
                     )
 
 add_definitions(-DUSE_HAL_DRIVER -DSTM32F469xx -DDEBUG -DUSE_BPP=24 -DCORE_M4 -D__irq="")
@@ -104,6 +105,7 @@ file(GLOB_RECURSE SOURCES
      "HTTPSClient/*.*"
      "gcc/startup_stm32f469xx.s"
      "wolfSSL/*.*"
+     "web/*.*"
      )
 
 set (EXCLUDE_DIR
@@ -115,6 +117,7 @@ set (EXCLUDE_DIR
      "Middlewares/Third_Party/FreeRTOS/Source/portable/IAR"
      "Middlewares/Third_Party/FreeRTOS/Source/portable/Keil"
      "Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS"
+#     "lib"
      )
 
 foreach (TMP_PATH ${SOURCES})
@@ -125,6 +128,10 @@ foreach (TMP_PATH ${SOURCES})
         endif ()
     endforeach(TMP_DIR)
 endforeach(TMP_PATH)
+
+add_subdirectory(lib/json libs/json)
+add_subdirectory(lib/touchgfx/modalMessage libs/touchgfx/modalMessage)
+#add_subdirectory(lib/json)
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/gcc/${Script})
 
@@ -137,8 +144,11 @@ add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 
 target_link_libraries(${PROJECT_NAME}.elf -L${CMAKE_SOURCE_DIR}/Middlewares/ST/touchgfx/lib/core/cortex_m4f/gcc)
 target_link_libraries(${PROJECT_NAME}.elf -ltouchgfx-float-abi-hard)
-#target_link_libraries(${PROJECT_NAME}.elf -Wl,--start-group -lc -lrdimon -lm -lstdc++ -lsupc++ -Wl,--end-group)
-target_link_libraries(${PROJECT_NAME}.elf -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group)
+target_link_libraries(${PROJECT_NAME}.elf cjson)
+target_link_libraries(${PROJECT_NAME}.elf modal_message)
+target_link_libraries(${PROJECT_NAME}.elf -Wl,--start-group -lc -lrdimon -lm -lstdc++ -lsupc++ -Wl,--end-group)
+#target_link_libraries(${PROJECT_NAME}.elf -Wl,--start-group -lc -lcjson -lrdimon -lm -lstdc++ -lsupc++ -Wl,--end-group)
+#target_link_libraries(${PROJECT_NAME}.elf -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group)
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)

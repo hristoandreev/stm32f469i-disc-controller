@@ -1405,6 +1405,16 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/common/FrontendApplication.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/CustomContainer1.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/containers/CustomContainer1.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/wifiItemContainer.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/containers/wifiItemContainer.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/Model.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/model/Model.cpp</locationURI>
@@ -1435,6 +1445,11 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/FontCache.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Font_verdanab_20_4bpp_0.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdanab_20_4bpp_0.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Font_verdana_10_4bpp_0.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdana_10_4bpp_0.cpp</locationURI>
@@ -1443,6 +1458,11 @@
 			<name>Application/User/generated/Font_verdana_20_4bpp_0.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdana_20_4bpp_0.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Font_verdana_30_4bpp_0.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdana_30_4bpp_0.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Font_verdana_40_4bpp_0.cpp</name>
@@ -1455,6 +1475,11 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/GeneratedFont.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Kerning_verdanab_20_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdanab_20_4bpp.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Kerning_verdana_10_4bpp.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdana_10_4bpp.cpp</locationURI>
@@ -1465,9 +1490,19 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdana_20_4bpp.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Kerning_verdana_30_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdana_30_4bpp.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Kerning_verdana_40_4bpp.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdana_40_4bpp.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Table_verdanab_20_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_verdanab_20_4bpp.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Table_verdana_10_4bpp.cpp</name>
@@ -1478,6 +1513,11 @@
 			<name>Application/User/generated/Table_verdana_20_4bpp.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_verdana_20_4bpp.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Table_verdana_30_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_verdana_30_4bpp.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Table_verdana_40_4bpp.cpp</name>
@@ -1495,6 +1535,16 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/CustomContainer1Base.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/containers/CustomContainer1Base.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/wifiItemContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/containers/wifiItemContainerBase.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Screen1ViewBase.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/screen1_screen/Screen1ViewBase.cpp</locationURI>
@@ -1505,24 +1555,94 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/BitmapDatabase.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_D1_MT8050iE_Meter.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_D1_MT8050iE_Meter.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_D2_MT8070iE_HeaterSystem_mod.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_D2_MT8070iE_HeaterSystem_mod.cpp</locationURI>
-		</link>
-		<link>
 			<name>Application/User/generated/image_D3_MT8100iE_AC_System.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_D3_MT8100iE_AC_System.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_E2_MT8150XE_DEMO.cpp</name>
+			<name>Application/User/generated/image_locked-padlock.cpp</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_E2_MT8150XE_DEMO.cpp</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_locked-padlock.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_modalWindowlBkg.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_modalWindowlBkg.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_wifi1_64x64.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi1_64x64.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_wifi2_64x64.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi2_64x64.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_wifi3_64x64.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi3_64x64.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_wifi4_64x64.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi4_64x64.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_wifi5_64x64.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi5_64x64.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Buttons_Round_Edge_large.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Buttons_Round_Edge_large.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Buttons_Round_Edge_large_pressed.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Buttons_Round_Edge_large_pressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Buttons_Round_Edge_small.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Buttons_Round_Edge_small.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Buttons_Round_Edge_small_pressed.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Buttons_Round_Edge_small_pressed.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Check_buttons_Check_mark_normal.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Check_buttons_Check_mark_normal.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_ProgressIndicators_bg_small_circle_indicator_bg_line_full.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_ProgressIndicators_bg_small_circle_indicator_bg_line_full.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_ProgressIndicators_fill_small_circle_indicator_fill_line_full.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_ProgressIndicators_fill_small_circle_indicator_fill_line_full.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Togglebars_Toggle_RE_small_button_OFF.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Togglebars_Toggle_RE_small_button_OFF.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Togglebars_Toggle_RE_small_button_ON.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Togglebars_Toggle_RE_small_button_ON.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/LanguageGb.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/texts/src/LanguageGb.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Texts.cpp</name>

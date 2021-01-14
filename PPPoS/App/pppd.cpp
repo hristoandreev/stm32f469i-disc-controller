@@ -25,7 +25,7 @@
 #include <lwip/dns.h>
 #include <netif/ppp/pppapi.h>
 #include <queue.h>
-#include <web.h>
+//#include <web.h>
 #include "netif/ppp/ppp.h"
 
 /* The PPP control block */
@@ -37,7 +37,7 @@ struct netif ppp_netif1;
 #define DATA_SIZE 1024U
 static u8_t ppp_data[DATA_SIZE];
 
-extern osMessageQueueId_t web_queue_responseHandle;
+//extern osMessageQueueId_t web_queue_responseHandle;
 
 static QueueHandle_t xQueue_pppos;
 extern UART_HandleTypeDef huart6;
@@ -79,9 +79,9 @@ void modem_reset() {
     HAL_GPIO_WritePin(ESP32_RESET_GPIO_Port, ESP32_RESET_Pin, GPIO_PIN_RESET);
     (void)osDelay(1000 / portTICK_RATE_MS);
     HAL_GPIO_WritePin(ESP32_RESET_GPIO_Port, ESP32_RESET_Pin, GPIO_PIN_SET);
-    (void)osDelay(1000 / portTICK_RATE_MS);
+    (void)osDelay(2000 / portTICK_RATE_MS);
 }
-httpsClientState state;
+//httpsClientState state;
 __attribute__((noreturn))
 void PPPoS_Task(void *argument) {
     (void) argument;
@@ -130,8 +130,8 @@ void PPPoS_Task(void *argument) {
 #if PPP_IPV6_SUPPORT
                            (void) printf("   our6_ipaddr = %s\n", ip6addr_ntoa(netif_ip6_addr(pppif, 0)));
 #endif /* PPP_IPV6_SUPPORT */
-                           state = httpc_READY;
-                           (void)osMessageQueuePut(web_queue_responseHandle, &state, 24, 1000);
+//                           state = httpc_READY;
+//                           (void)osMessageQueuePut(web_queue_responseHandle, &state, 24, 1000);
                            break;
                        case PPPERR_PARAM: (void) printf("status_cb: Invalid parameter\n");
                            break;

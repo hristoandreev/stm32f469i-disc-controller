@@ -20,15 +20,708 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Type": "BoxWithBorder",
+                "Color": {
+                  "Red": 166,
+                  "Green": 143,
+                  "Blue": 0
+                },
+                "BorderColor": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "BorderSize": 2,
+                "Alpha": 255,
+                "Name": "wifiTitleBox",
+                "X": 0,
+                "Y": 0,
+                "Width": 800,
+                "Height": 55,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "BoxWithBorder",
+                "Color": {
+                  "Red": 166,
+                  "Green": 143,
+                  "Blue": 0
+                },
+                "BorderColor": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "BorderSize": 1,
+                "Alpha": 255,
+                "Name": "systemTitleBox",
+                "X": 0,
+                "Y": 440,
+                "Width": 800,
+                "Height": 40,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId2",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "wifiTitleText",
+                "X": 22,
+                "Y": 3,
+                "Width": 114,
+                "Height": 49,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "CircleProgress",
+                "FileNameProgress": "__designer\\Blue_ProgressIndicators_fill_small_circle_indicator_fill_line_full.png",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "CenterX": 27,
+                "CenterY": 27,
+                "Radius": 20,
+                "LineWidth": 10,
+                "StartAngle": 0,
+                "EndAngle": 360,
+                "CapPrecision": "Butt",
+                "Alpha": 255,
+                "Style": "Style3",
+                "FileNameBackground": "__designer\\Blue_ProgressIndicators_bg_small_circle_indicator_bg_line_full.png",
+                "IndicatorPositionX": 0,
+                "IndicatorPositionY": 0,
+                "IndicatorPositionWidth": 0,
+                "IndicatorPositionHeight": 0,
+                "ProgressRangeMin": 0,
+                "ProgressRangeMax": 100,
+                "ProgressRangeSteps": 0,
+                "ProgressRangeStepsMin": 0,
+                "ProgressInitialValue": 60,
+                "Name": "wifiScanningProgress",
+                "X": 713,
+                "Y": 0,
+                "Width": 54,
+                "Height": 54,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "BoxWithBorder",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "BorderColor": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "BorderSize": 1,
+                "Alpha": 255,
+                "Name": "wifiListBkg",
+                "X": 0,
+                "Y": 55,
+                "Width": 800,
+                "Height": 385,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "ScrollList",
+                "PaddingBefore": 0,
+                "PaddingAfter": 0,
+                "Snapping": true,
+                "IsHorizontal": false,
+                "IsCircular": false,
+                "ItemTemplateName": "wifiItemContainer",
+                "NumberofItems": 0,
+                "InitialElement": 0,
+                "ItemMargin": 0,
+                "Easing": "Back",
+                "EasingOption": "Out",
+                "SwipeAcceleration": 1.0,
+                "DragAcceleration": 1.0,
+                "Name": "wifiScrollList",
+                "X": 0,
+                "Y": 55,
+                "Width": 800,
+                "Height": 385,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "ToggleButton",
+                "InitialStatePressed": false,
+                "Pressed": "__designer\\Blue_Togglebars_Toggle_RE_small_button_ON.png",
+                "Released": "__designer\\Blue_Togglebars_Toggle_RE_small_button_OFF.png",
+                "Alpha": 255,
+                "Style": "Style3",
+                "Name": "wifiOnOff",
+                "X": 564,
+                "Y": 8,
+                "Width": 96,
+                "Height": 38,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "DigitalClock",
+                "TextColor": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "TextId": "SingleUseId8",
+                "DisplaySeconds": false,
+                "DisplayLeadingZeroForHourIndicator": true,
+                "Alpha": 255,
+                "UseAmPm": false,
+                "InitialHour": 23,
+                "InitialMinute": 40,
+                "InitialSecond": 0,
+                "Name": "digitalClock",
+                "X": 719,
+                "Y": 448,
+                "Width": 66,
+                "Height": 25,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "ScalableImage",
+                "Filename": "wifi1_64x64.png",
+                "Alpha": 255,
+                "ScalingAlgorithm": "Nearest-neighbor",
+                "Name": "wifiStrengthIcon",
+                "X": 672,
+                "Y": 444,
+                "Width": 32,
+                "Height": 32,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "SlideMenu",
+            "FileNameBackground": "D3_MT8100iE_AC_System.png",
+            "BackgroundX": 0,
+            "BackgroundY": 0,
+            "UseButton": true,
+            "FileNameButtonPressed": "__designer\\Blue_Buttons_Round_Edge_large_pressed.png",
+            "FileNameButtonReleased": "__designer\\Blue_Buttons_Round_Edge_large.png",
+            "ButtonX": 213,
+            "ButtonY": 420,
+            "State": "Expanded",
+            "ExpandDirection": "South",
+            "Easing": "Cubic",
+            "EasingOption": "InOut",
+            "AnimationDuration": 300,
+            "VisiblePixelsWhenCollapsed": 40,
+            "HiddenPixelsWhenExpanded": 0,
+            "ExpandedStateTimeout": 0,
+            "Name": "wifiSlideMenu",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Type": "ButtonWithLabel",
+                "Pressed": "__designer\\Blue_Buttons_Round_Edge_small_pressed.png",
+                "Released": "__designer\\Blue_Buttons_Round_Edge_small.png",
+                "Alpha": 255,
+                "TextId": "SingleUseId9",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Style": "Style4",
+                "Name": "buttonCancel",
+                "X": 50,
+                "Y": 243,
+                "Width": 170,
+                "Height": 60,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Pressed": "__designer\\Blue_Buttons_Round_Edge_small_pressed.png",
+                "Released": "__designer\\Blue_Buttons_Round_Edge_small.png",
+                "Alpha": 255,
+                "TextId": "SingleUseId10",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Style": "Style4",
+                "Name": "buttonOk",
+                "X": 260,
+                "Y": 243,
+                "Width": 170,
+                "Height": 60,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId11",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 128
+                },
+                "Name": "title",
+                "X": 35,
+                "Y": 13,
+                "Width": 0,
+                "Height": 25,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "BoxWithBorder",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "BorderColor": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "BorderSize": 5,
+                "Alpha": 255,
+                "Name": "boxWithBorder1",
+                "X": 24,
+                "Y": 96,
+                "Width": 433,
+                "Height": 50,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId13",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "Alpha": 255,
+                "AutoSize": false,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 50
+                },
+                "Name": "password",
+                "X": 36,
+                "Y": 96,
+                "Width": 410,
+                "Height": 50,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId12",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textArea1",
+                "X": 35,
+                "Y": 65,
+                "Width": 94,
+                "Height": 25,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "ModalWindow",
+            "FileName": "modalWindowlBkg.png",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "ModalX": 160,
+            "ModalY": 80,
+            "ModalWidth": 480,
+            "ModalHeight": 320,
+            "ContX": 0,
+            "ContY": 0,
+            "Alpha": 150,
+            "Name": "connectAPModalWindow",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 480,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [],
         "Name": "Screen1",
-        "OverrideDefaultBufferSize": false,
-        "CanvasBufferSize": 0
+        "OverrideDefaultBufferSize": true,
+        "CanvasBufferSize": 20000
       }
     ],
-    "CustomContainerDefinitions": [],
+    "CustomContainerDefinitions": [
+      {
+        "Components": [
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "BorderSize": 1,
+            "Alpha": 255,
+            "Name": "boxWithBorder1",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 80,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "wifi1_64x64.png",
+            "Alpha": 255,
+            "Name": "accessPointStrengthIcon",
+            "X": 90,
+            "Y": 8,
+            "Width": 64,
+            "Height": 64,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId1",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId5",
+              "UseBuffer": true,
+              "BufferSize": 128
+            },
+            "Name": "accessPointName",
+            "X": 190,
+            "Y": 4,
+            "Width": 182,
+            "Height": 37,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 150,
+              "Green": 150,
+              "Blue": 150
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4",
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
+            "Name": "accessPointStranght",
+            "X": 190,
+            "Y": 47,
+            "Width": 86,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId6",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 150,
+              "Green": 150,
+              "Blue": 150
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId7",
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
+            "Name": "accessPointAuthMode",
+            "X": 296,
+            "Y": 47,
+            "Width": 186,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "__designer\\Blue_Check_buttons_Check_mark_normal.png",
+            "Alpha": 255,
+            "Name": "accessPointConnectionIcon",
+            "X": 21,
+            "Y": 18,
+            "Width": 44,
+            "Height": 44,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "locked-padlock.png",
+            "Alpha": 255,
+            "Name": "accessPointLockIcon",
+            "X": 138,
+            "Y": 34,
+            "Width": 32,
+            "Height": 32,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "wifiItemContainer",
+        "X": 0,
+        "Y": 0,
+        "Width": 800,
+        "Height": 80
+      },
+      {
+        "Components": [],
+        "Interactions": [],
+        "Name": "CustomContainer1",
+        "X": 275,
+        "Y": 115,
+        "Width": 250,
+        "Height": 250
+      }
+    ],
+    "TextEntries": [
+      {
+        "TextEntryId": "SingleUseId1",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId2",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId5",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId6",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId7",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId8",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId9",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId10",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId11",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId12",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId13",
+        "IsResource": false
+      }
+    ],
     "Name": "STM32F469I-DISCO",
     "Resolution": {
       "Width": 800,

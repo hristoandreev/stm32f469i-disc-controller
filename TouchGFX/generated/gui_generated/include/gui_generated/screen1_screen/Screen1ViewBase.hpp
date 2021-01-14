@@ -9,6 +9,21 @@
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TiledImage.hpp>
+#include <touchgfx/containers/SlideMenu.hpp>
+#include <touchgfx/widgets/BoxWithBorder.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/containers/progress_indicators/CircleProgress.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB888Bitmap.hpp>
+#include <touchgfx/containers/scrollers/ScrollList.hpp>
+#include <gui/containers/wifiItemContainer.hpp>
+#include <touchgfx/widgets/ToggleButton.hpp>
+#include <touchgfx/containers/clock/DigitalClock.hpp>
+#include <touchgfx/widgets/ScalableImage.hpp>
+#include <touchgfx/containers/ModalWindow.hpp>
+#include <touchgfx/Color.hpp>
+#include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -16,6 +31,11 @@ public:
     Screen1ViewBase();
     virtual ~Screen1ViewBase() {}
     virtual void setupScreen();
+
+    virtual void wifiScrollListUpdateItem(wifiItemContainer& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen1
+    }
 
 protected:
     FrontendApplication& application() {
@@ -27,9 +47,44 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::TiledImage bkgImage;
+    touchgfx::SlideMenu wifiSlideMenu;
+    touchgfx::BoxWithBorder wifiTitleBox;
+    touchgfx::BoxWithBorder systemTitleBox;
+    touchgfx::TextArea wifiTitleText;
+    touchgfx::CircleProgress wifiScanningProgress;
+    touchgfx::PainterRGB888Bitmap wifiScanningProgressPainter;
+    touchgfx::BoxWithBorder wifiListBkg;
+    touchgfx::ScrollList wifiScrollList;
+    touchgfx::DrawableListItems<wifiItemContainer, 6> wifiScrollListListItems;
+
+    touchgfx::ToggleButton wifiOnOff;
+    touchgfx::DigitalClock digitalClock;
+    touchgfx::ScalableImage wifiStrengthIcon;
+    touchgfx::ModalWindow connectAPModalWindow;
+    touchgfx::ButtonWithLabel buttonCancel;
+    touchgfx::ButtonWithLabel buttonOk;
+    touchgfx::TextAreaWithOneWildcard title;
+    touchgfx::BoxWithBorder boxWithBorder1;
+    touchgfx::TextAreaWithOneWildcard password;
+    touchgfx::TextArea textArea1;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TITLE_SIZE = 128;
+    touchgfx::Unicode::UnicodeChar titleBuffer[TITLE_SIZE];
+    static const uint16_t PASSWORD_SIZE = 50;
+    touchgfx::Unicode::UnicodeChar passwordBuffer[PASSWORD_SIZE];
 
 private:
+    touchgfx::Callback<Screen1ViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
+    void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
 
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint16_t CANVAS_BUFFER_SIZE = 20000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // SCREEN1VIEWBASE_HPP

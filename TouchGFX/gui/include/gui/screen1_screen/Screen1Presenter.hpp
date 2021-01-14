@@ -27,6 +27,13 @@ public:
 
     virtual ~Screen1Presenter() {};
 
+    //from model
+    virtual void wifiScanningDone();
+
+    virtual void updateProgress(int value);
+
+    virtual void hideProgress();
+
 private:
     Screen1Presenter();
 
