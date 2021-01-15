@@ -3,6 +3,7 @@
 
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
+#include "modalMessage.h"
 
 class Screen1View : public Screen1ViewBase
 {
@@ -33,7 +34,7 @@ private:
         bool isKnow;
     } ap_info[APINFO_SIZE];
 
-
+    modalMessage message;
 };
 
 #endif // SCREEN1VIEW_HPP

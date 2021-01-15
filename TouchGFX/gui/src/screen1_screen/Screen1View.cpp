@@ -11,13 +11,14 @@
 Screen1View::Screen1View() :
     scrollListItemSelectedCallback(this, &Screen1View::scrollListItemSelectedHandler)
 {
-
+    wifiScrollList.setItemSelectedCallback(scrollListItemSelectedCallback);
+    message.setPosition(0, 0, 800, 480);
+    add(message);
 }
 
 void Screen1View::setupScreen()
 {
     Screen1ViewBase::setupScreen();
-    wifiScrollList.setItemSelectedCallback(scrollListItemSelectedCallback);
 //    setItemSelectedCallback(updateApScanningProgress);
 //    wifiScanningProgress.setVisible(false);
 //    wifiScanningProgress.setStartEndAngle(0, 720);
@@ -117,12 +118,13 @@ void Screen1View::updateAccessPoints(char *str) {
 }
 
 void Screen1View::scrollListItemSelectedHandler(int16_t itemSelected) {
-    char *ssid = ap_info[itemSelected].SSID;
-    (void)Unicode::strncpy(titleBuffer, ssid, strlen(ssid));
-    (void)Unicode::snprintf(titleBuffer, TITLE_SIZE, "%s", titleBuffer);
-    title.resizeToCurrentText();
-    connectAPModalWindow.show();
-    connectAPModalWindow.invalidate();
+//    char *ssid = ap_info[itemSelected].SSID;
+//    (void)Unicode::strncpy(titleBuffer, ssid, strlen(ssid));
+//    (void)Unicode::snprintf(titleBuffer, TITLE_SIZE, "%s", titleBuffer);
+//    title.resizeToCurrentText();
+//    connectAPModalWindow.show();
+//    connectAPModalWindow.invalidate();
+    message.show("Puu deeba", "Mama mu deeba!");
 }
 /*
  * "{\"status\":\"success\",
