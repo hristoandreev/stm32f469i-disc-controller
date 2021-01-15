@@ -23,7 +23,7 @@ public:
 
     void setAccessPointName(const char *name) {
         (void)Unicode::strncpy(accessPointNameBuffer, name, ACCESSPOINTNAME_SIZE);
-        (void)Unicode::snprintf(accessPointNameBuffer, ACCESSPOINTNAME_SIZE, "%s", accessPointNameBuffer);
+//        (void)Unicode::snprintf(accessPointNameBuffer, ACCESSPOINTNAME_SIZE, "%s", accessPointNameBuffer);
         accessPointName.resizeToCurrentText();
 //        accessPointName.invalidate();
     }
@@ -36,7 +36,7 @@ public:
 
     void setAccessPointAuthMode(const char *authMode) {
         (void)Unicode::strncpy(accessPointAuthModeBuffer, authMode, ACCESSPOINTAUTHMODE_SIZE);
-        (void)Unicode::snprintf(accessPointAuthModeBuffer, ACCESSPOINTAUTHMODE_SIZE, "%s", accessPointAuthModeBuffer);
+//        (void)Unicode::snprintf(accessPointAuthModeBuffer, ACCESSPOINTAUTHMODE_SIZE, "%s", accessPointAuthModeBuffer);
         accessPointAuthMode.resizeToCurrentText();
 //        accessPointAuthMode.invalidate();
     }

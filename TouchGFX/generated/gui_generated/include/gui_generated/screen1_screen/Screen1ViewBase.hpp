@@ -16,7 +16,6 @@
 #include <touchgfx/widgets/canvas/PainterRGB888Bitmap.hpp>
 #include <touchgfx/containers/scrollers/ScrollList.hpp>
 #include <gui/containers/wifiItemContainer.hpp>
-#include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
 #include <touchgfx/widgets/ScalableImage.hpp>
 #include <touchgfx/containers/ModalWindow.hpp>
@@ -57,7 +56,6 @@ protected:
     touchgfx::ScrollList wifiScrollList;
     touchgfx::DrawableListItems<wifiItemContainer, 6> wifiScrollListListItems;
 
-    touchgfx::ToggleButton wifiOnOff;
     touchgfx::DigitalClock digitalClock;
     touchgfx::ScalableImage wifiStrengthIcon;
     touchgfx::ModalWindow connectAPModalWindow;

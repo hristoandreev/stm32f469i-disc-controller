@@ -192,25 +192,6 @@
                 "Moveable": false
               },
               {
-                "Type": "ToggleButton",
-                "InitialStatePressed": false,
-                "Pressed": "__designer\\Blue_Togglebars_Toggle_RE_small_button_ON.png",
-                "Released": "__designer\\Blue_Togglebars_Toggle_RE_small_button_OFF.png",
-                "Alpha": 255,
-                "Style": "Style3",
-                "Name": "wifiOnOff",
-                "X": 564,
-                "Y": 8,
-                "Width": 96,
-                "Height": 38,
-                "Visible": true,
-                "LockPosition": false,
-                "Draggable": false,
-                "Clickable": false,
-                "Fadeable": false,
-                "Moveable": false
-              },
-              {
                 "Type": "DigitalClock",
                 "TextColor": {
                   "Red": 0,
@@ -657,15 +638,6 @@
         "Y": 0,
         "Width": 800,
         "Height": 80
-      },
-      {
-        "Components": [],
-        "Interactions": [],
-        "Name": "CustomContainer1",
-        "X": 275,
-        "Y": 115,
-        "Width": 250,
-        "Height": 250
       }
     ],
     "TextEntries": [

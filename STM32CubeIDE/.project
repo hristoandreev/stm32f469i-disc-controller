@@ -1405,11 +1405,6 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/common/FrontendApplication.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/gui/CustomContainer1.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/containers/CustomContainer1.cpp</locationURI>
-		</link>
-		<link>
 			<name>Application/User/gui/wifiItemContainer.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/containers/wifiItemContainer.cpp</locationURI>
@@ -1535,11 +1530,6 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/CustomContainer1Base.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/containers/CustomContainer1Base.cpp</locationURI>
-		</link>
-		<link>
 			<name>Application/User/generated/wifiItemContainerBase.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/containers/wifiItemContainerBase.cpp</locationURI>
@@ -1628,16 +1618,6 @@
 			<name>Application/User/generated/image_Blue_ProgressIndicators_fill_small_circle_indicator_fill_line_full.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_ProgressIndicators_fill_small_circle_indicator_fill_line_full.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_Blue_Togglebars_Toggle_RE_small_button_OFF.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Togglebars_Toggle_RE_small_button_OFF.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_Blue_Togglebars_Toggle_RE_small_button_ON.cpp</name>
-			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Togglebars_Toggle_RE_small_button_ON.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/LanguageGb.cpp</name>

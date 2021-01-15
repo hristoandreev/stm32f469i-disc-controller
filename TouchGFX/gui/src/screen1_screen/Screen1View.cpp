@@ -2,7 +2,6 @@
 #include <cstring>
 #include <string>
 #include <BitmapDatabase.hpp>
-#include "modalMessage.h"
 
 #ifndef SIMULATOR
 #include "cJSON.h"
@@ -119,7 +118,7 @@ void Screen1View::updateAccessPoints(char *str) {
 void Screen1View::scrollListItemSelectedHandler(int16_t itemSelected) {
     char *ssid = ap_info[itemSelected].SSID;
     (void)Unicode::strncpy(titleBuffer, ssid, strlen(ssid));
-    (void)Unicode::snprintf(titleBuffer, TITLE_SIZE, "%s", titleBuffer);
+//    (void)Unicode::snprintf(titleBuffer, TITLE_SIZE, "%s", titleBuffer);
     title.resizeToCurrentText();
     connectAPModalWindow.show();
     connectAPModalWindow.invalidate();
