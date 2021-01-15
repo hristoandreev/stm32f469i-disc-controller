@@ -3,20 +3,25 @@
 #include <string>
 #include <BitmapDatabase.hpp>
 
+
 #ifndef SIMULATOR
 #include "cJSON.h"
+#include <web.h>
 #endif
 
 Screen1View::Screen1View() :
-    scrollListItemSelectedCallback(this, &Screen1View::scrollListItemSelectedHandler)
+    scrollListItemSelectedCallback(this, &Screen1View::scrollListItemSelectedHandler),
+    apPassSetBtnOkCallback(this, &Screen1View::apPassSetBtnOkCallbackHandler),
+    apPassSetBtnCancelCallback(this, &Screen1View::apPassSetBtnCancelCallbackHandler)
 {
-
+    wifiScrollList.setItemSelectedCallback(scrollListItemSelectedCallback);
+    buttonOk.setAction(apPassSetBtnOkCallback);
+    buttonCancel.setAction(apPassSetBtnCancelCallback);
 }
 
 void Screen1View::setupScreen()
 {
     Screen1ViewBase::setupScreen();
-    wifiScrollList.setItemSelectedCallback(scrollListItemSelectedCallback);
 //    setItemSelectedCallback(updateApScanningProgress);
 //    wifiScanningProgress.setVisible(false);
 //    wifiScanningProgress.setStartEndAngle(0, 720);
@@ -121,6 +126,26 @@ void Screen1View::scrollListItemSelectedHandler(int16_t itemSelected) {
 //    (void)Unicode::snprintf(titleBuffer, TITLE_SIZE, "%s", titleBuffer);
     title.resizeToCurrentText();
     connectAPModalWindow.show();
+    connectAPModalWindow.invalidate();
+}
+
+void Screen1View::apPassSetBtnOkCallbackHandler(const AbstractButton &src) {
+    uint8_t utf8Password[50];
+    uint8_t utf8SSID[128];
+    char *uri[512];
+    connectAPModalWindow.hide();
+    connectAPModalWindow.invalidate();
+    (void)Unicode::toUTF8(passwordBuffer, utf8Password, sizeof(utf8Password));
+    (void)Unicode::toUTF8(titleBuffer, utf8SSID, sizeof(utf8SSID));
+    (void)sprintf(reinterpret_cast<char *>(uri),
+                  "http://192.168.3.1/wifi?cmd=connect&ssid=%s&pass=%s",
+                  utf8SSID, utf8Password);
+    web web;
+//    web.get(uri, );
+}
+
+void Screen1View::apPassSetBtnCancelCallbackHandler(const AbstractButton &src) {
+    connectAPModalWindow.hide();
     connectAPModalWindow.invalidate();
 }
 /*

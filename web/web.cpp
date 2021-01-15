@@ -57,7 +57,7 @@ void web::web_service(void *arg) {
     }
 }
 
-webState web::web_get(const char *uri, const char *in_buff, size_t in_buff_size, int timeout) {
+webState web::get(const char *uri, const char *in_buff, size_t in_buff_size, int timeout) {
     struct web_pkg web_req {};
     StaticQueue_t stQueue;
     uint16_t mem;

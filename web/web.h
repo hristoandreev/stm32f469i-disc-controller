@@ -18,7 +18,7 @@ typedef enum {
 class web {
 public:
 
-    webState web_get(const char *uri, const char *in_buff, size_t in_buff_size, int timeout);
+    webState get(const char *uri, const char *in_buff, size_t in_buff_size, int timeout);
 
     static void web_service(void *arg);
 private:

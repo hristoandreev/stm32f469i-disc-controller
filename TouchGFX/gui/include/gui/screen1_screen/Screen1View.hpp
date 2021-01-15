@@ -20,8 +20,19 @@ public:
 protected:
 
 private:
-    Callback<Screen1View, int16_t> scrollListItemSelectedCallback;
+    /*
+    * Callback Declarations
+    */
+    touchgfx::Callback<Screen1View, int16_t> scrollListItemSelectedCallback;
+    touchgfx::Callback<Screen1View, const touchgfx::AbstractButton&> apPassSetBtnOkCallback;
+    touchgfx::Callback<Screen1View, const touchgfx::AbstractButton&> apPassSetBtnCancelCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
     void scrollListItemSelectedHandler(int16_t itemSelected);
+    void apPassSetBtnOkCallbackHandler(const touchgfx::AbstractButton& src);
+    void apPassSetBtnCancelCallbackHandler(const touchgfx::AbstractButton& src);
 
     static const int APINFO_SIZE = 128;
     struct APinfo {
