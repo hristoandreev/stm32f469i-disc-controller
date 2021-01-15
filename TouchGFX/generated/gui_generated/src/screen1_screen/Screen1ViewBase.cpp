@@ -83,10 +83,6 @@ Screen1ViewBase::Screen1ViewBase() :
     wifiScrollList.setDrawables(wifiScrollListListItems, updateItemCallback);
     wifiSlideMenu.add(wifiScrollList);
 
-    wifiOnOff.setXY(564, 8);
-    wifiOnOff.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_RE_SMALL_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_RE_SMALL_BUTTON_ON_ID));
-    wifiSlideMenu.add(wifiOnOff);
-
     digitalClock.setPosition(719, 448, 66, 25);
     digitalClock.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     digitalClock.setTypedText(touchgfx::TypedText(T_SINGLEUSEID8));
