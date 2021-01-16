@@ -81,7 +81,7 @@ private:
     /*
      * Canvas Buffer Size
      */
-    static const uint16_t CANVAS_BUFFER_SIZE = 20000;
+    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
     uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 

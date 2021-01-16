@@ -76,10 +76,11 @@ static int pppos_read(void *data_p, size_t size, uint32_t timeout) {
 }
 
 void modem_reset() {
+    (void)osDelay(1000 / portTICK_RATE_MS);
     HAL_GPIO_WritePin(ESP32_RESET_GPIO_Port, ESP32_RESET_Pin, GPIO_PIN_RESET);
     (void)osDelay(1000 / portTICK_RATE_MS);
     HAL_GPIO_WritePin(ESP32_RESET_GPIO_Port, ESP32_RESET_Pin, GPIO_PIN_SET);
-    (void)osDelay(2000 / portTICK_RATE_MS);
+    (void)osDelay(1000 / portTICK_RATE_MS);
 }
 //httpsClientState state;
 __attribute__((noreturn))

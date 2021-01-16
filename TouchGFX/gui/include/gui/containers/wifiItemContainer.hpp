@@ -14,15 +14,17 @@ public:
     void setAccessPointStrengthLockIcon(BitmapId bitmap) {
         accessPointStrengthIcon.setBitmap(touchgfx::Bitmap(bitmap));
         accessPointLockIcon.setVisible(true);
+//        accessPointLockIcon.invalidate();
     }
 
     void setAccessPointStrengthUnlockIcon(BitmapId bitmap) {
         accessPointStrengthIcon.setBitmap(touchgfx::Bitmap(bitmap));
         accessPointLockIcon.setVisible(false);
+//        accessPointLockIcon.invalidate();
     }
 
     void setAccessPointName(const char *name) {
-        (void)Unicode::strncpy(accessPointNameBuffer, name, ACCESSPOINTNAME_SIZE);
+        (void)Unicode::fromUTF8(reinterpret_cast<const uint8_t *>(name), accessPointNameBuffer, ACCESSPOINTNAME_SIZE);
 //        (void)Unicode::snprintf(accessPointNameBuffer, ACCESSPOINTNAME_SIZE, "%s", accessPointNameBuffer);
         accessPointName.resizeToCurrentText();
 //        accessPointName.invalidate();
@@ -35,7 +37,7 @@ public:
     }
 
     void setAccessPointAuthMode(const char *authMode) {
-        (void)Unicode::strncpy(accessPointAuthModeBuffer, authMode, ACCESSPOINTAUTHMODE_SIZE);
+        (void)Unicode::fromUTF8(reinterpret_cast<const uint8_t *>(authMode), accessPointAuthModeBuffer, ACCESSPOINTAUTHMODE_SIZE);
 //        (void)Unicode::snprintf(accessPointAuthModeBuffer, ACCESSPOINTAUTHMODE_SIZE, "%s", accessPointAuthModeBuffer);
         accessPointAuthMode.resizeToCurrentText();
 //        accessPointAuthMode.invalidate();

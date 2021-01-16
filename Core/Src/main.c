@@ -31,7 +31,6 @@
 #include "stm32469i_discovery_sdram.h"
 #include "stm32469i_discovery_qspi.h"
 #include "pppd.h"
-#include "https_client_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,20 +95,10 @@ const osThreadAttr_t PPPoSTask_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 1024 * 4
 };
-/* Definitions for web_queue_request */
-osMessageQueueId_t web_queue_requestHandle;
-const osMessageQueueAttr_t web_queue_request_attributes = {
-  .name = "web_queue_request"
-};
 /* Definitions for web_queue_response */
 osMessageQueueId_t web_queue_responseHandle;
 const osMessageQueueAttr_t web_queue_response_attributes = {
   .name = "web_queue_response"
-};
-/* Definitions for https_response_event */
-osEventFlagsId_t https_response_eventHandle;
-const osEventFlagsAttr_t https_response_event_attributes = {
-  .name = "https_response_event"
 };
 /* USER CODE BEGIN PV */
 
@@ -212,9 +201,6 @@ int main(void)
   /* USER CODE END RTOS_TIMERS */
 
   /* Create the queue(s) */
-  /* creation of web_queue_request */
-  web_queue_requestHandle = osMessageQueueNew (5, sizeof(struct web_pkg), &web_queue_request_attributes);
-
   /* creation of web_queue_response */
   web_queue_responseHandle = osMessageQueueNew (5, sizeof(uint16_t), &web_queue_response_attributes);
 
@@ -227,7 +213,7 @@ int main(void)
   TouchGFXTaskHandle = osThreadNew(TouchGFX_Task, NULL, &TouchGFXTask_attributes);
 
   /* creation of HTTPSClientTask */
-  HTTPSClientTaskHandle = osThreadNew(HTTPSClient_Task, (void*) web_queue_requestHandle, &HTTPSClientTask_attributes);
+  HTTPSClientTaskHandle = osThreadNew(HTTPSClient_Task, NULL, &HTTPSClientTask_attributes);
 
   /* creation of PPPoSTask */
   PPPoSTaskHandle = osThreadNew(PPPoS_Task, NULL, &PPPoSTask_attributes);
@@ -235,10 +221,6 @@ int main(void)
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
-
-  /* Create the event(s) */
-  /* creation of https_response_event */
-  https_response_eventHandle = osEventFlagsNew(&https_response_event_attributes);
 
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */

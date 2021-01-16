@@ -464,7 +464,7 @@
         "Interactions": [],
         "Name": "Screen1",
         "OverrideDefaultBufferSize": true,
-        "CanvasBufferSize": 20000
+        "CanvasBufferSize": 12000
       }
     ],
     "CustomContainerDefinitions": [

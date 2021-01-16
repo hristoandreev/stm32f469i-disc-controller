@@ -10,7 +10,7 @@ public:
     
     virtual ~ModelListener() {}
 
-    virtual void wifiScanningDone() {};
+    virtual void wifiScanningDone(char *res) {};
 
     virtual void updateProgress(int value);
 

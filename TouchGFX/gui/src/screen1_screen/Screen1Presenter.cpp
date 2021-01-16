@@ -17,8 +17,8 @@ void Screen1Presenter::deactivate()
 
 }
 
-void Screen1Presenter::wifiScanningDone() {
-    view.updateAccessPoints(model->getData());
+void Screen1Presenter::wifiScanningDone(char *res) {
+    view.updateAccessPoints(res);
 }
 
 void Screen1Presenter::updateProgress(int value) {

@@ -3,16 +3,16 @@
 #include <string>
 #include <BitmapDatabase.hpp>
 
-
 #ifndef SIMULATOR
 #include "cJSON.h"
-#include <web.h>
+#include "web.h"
 #endif
 
 Screen1View::Screen1View() :
     scrollListItemSelectedCallback(this, &Screen1View::scrollListItemSelectedHandler),
     apPassSetBtnOkCallback(this, &Screen1View::apPassSetBtnOkCallbackHandler),
-    apPassSetBtnCancelCallback(this, &Screen1View::apPassSetBtnCancelCallbackHandler)
+    apPassSetBtnCancelCallback(this, &Screen1View::apPassSetBtnCancelCallbackHandler),
+    webResCompleteCallback(this, &Screen1View::webResCompleteCallbackHandler)
 {
     wifiScrollList.setItemSelectedCallback(scrollListItemSelectedCallback);
     buttonOk.setAction(apPassSetBtnOkCallback);
@@ -22,9 +22,8 @@ Screen1View::Screen1View() :
 void Screen1View::setupScreen()
 {
     Screen1ViewBase::setupScreen();
-//    setItemSelectedCallback(updateApScanningProgress);
-//    wifiScanningProgress.setVisible(false);
-//    wifiScanningProgress.setStartEndAngle(0, 720);
+//    for(int i = 0; i < wifiScrollListListItems.getNumberOfDrawables(); ++i)
+//        wifiScrollList.itemChanged(i);
 }
 
 void Screen1View::tearDownScreen()
@@ -40,11 +39,13 @@ void Screen1View::updateApScanningProgress(int value) {
 
 void Screen1View::hideProgress() {
     wifiScanningProgress.setVisible(false);
+    wifiScanningProgress.invalidate();
 }
 
 void Screen1View::wifiScrollListUpdateItem(wifiItemContainer& item, int16_t itemIndex) {
     auto apStrength = ap_info[itemIndex].RSSI;
-    auto AuthMode = ap_info[itemIndex].AuthMode;
+    auto authMode = ap_info[itemIndex].AuthMode;
+    auto ssid = ap_info[itemIndex].SSID;
     BitmapId bmpID;
 
     if(apStrength > -50) bmpID = BITMAP_WIFI5_64X64_ID;
@@ -53,12 +54,12 @@ void Screen1View::wifiScrollListUpdateItem(wifiItemContainer& item, int16_t item
     else if(apStrength < -70) bmpID = BITMAP_WIFI2_64X64_ID;
     else bmpID = BITMAP_WIFI1_64X64_ID;
 
-    if(strcmp(AuthMode, "Unknown") == 0) item.setAccessPointStrengthUnlockIcon(bmpID);
+    if(strcmp(authMode, "Unknown") == 0) item.setAccessPointStrengthUnlockIcon(bmpID);
     else item.setAccessPointStrengthLockIcon(bmpID);
 
-    item.setAccessPointName(ap_info[itemIndex].SSID);
+    item.setAccessPointName(ssid);
     item.setAccessPointStrength(apStrength);
-    item.setAccessPointAuthMode(AuthMode);
+    item.setAccessPointAuthMode(authMode);
 //    item.invalidate();
 }
 
@@ -72,7 +73,7 @@ void Screen1View::wifiScrollListUpdateItem(wifiItemContainer& item, int16_t item
 
 void Screen1View::updateAccessPoints(char *str) {
 #ifndef SIMULATOR
-    size_t itemCnt = 0;
+    itemCnt = 0;
     cJSON *scan_json = cJSON_Parse(str);
     if(scan_json == nullptr) return;
 
@@ -113,17 +114,17 @@ void Screen1View::updateAccessPoints(char *str) {
         itemCnt++;
     }
 
-//    wifiScrollList.removeAll();
-    wifiScrollList.setNumberOfItems(itemCnt);
-//    scrollableContainer1.
     cJSON_Delete(scan_json);
+//    wifiScrollList.removeAll();
+//    wifiScrollList.setNumberOfItems(itemCnt);
+//    wifiScrollList.invalidate();
+//    scrollableContainer1.
 #endif
 }
 
 void Screen1View::scrollListItemSelectedHandler(int16_t itemSelected) {
     char *ssid = ap_info[itemSelected].SSID;
-    (void)Unicode::strncpy(titleBuffer, ssid, strlen(ssid));
-//    (void)Unicode::snprintf(titleBuffer, TITLE_SIZE, "%s", titleBuffer);
+    (void)Unicode::fromUTF8(reinterpret_cast<const uint8_t *>(ssid), titleBuffer, TITLE_SIZE);
     title.resizeToCurrentText();
     connectAPModalWindow.show();
     connectAPModalWindow.invalidate();
@@ -140,13 +141,24 @@ void Screen1View::apPassSetBtnOkCallbackHandler(const AbstractButton &src) {
     (void)sprintf(reinterpret_cast<char *>(uri),
                   "http://192.168.3.1/wifi?cmd=connect&ssid=%s&pass=%s",
                   utf8SSID, utf8Password);
-    web web;
-//    web.get(uri, );
+//    web web;
+//    (void)web.get(reinterpret_cast<const char *>(uri), &webResCompleteCallback);
 }
 
 void Screen1View::apPassSetBtnCancelCallbackHandler(const AbstractButton &src) {
     connectAPModalWindow.hide();
     connectAPModalWindow.invalidate();
+}
+
+void Screen1View::webResCompleteCallbackHandler(const char *res) {
+
+}
+
+void Screen1View::handleTickEvent() {
+    if(itemCnt) {
+        wifiScrollList.setNumberOfItems(itemCnt);
+        itemCnt = 0;
+    }
 }
 /*
  * "{\"status\":\"success\",
