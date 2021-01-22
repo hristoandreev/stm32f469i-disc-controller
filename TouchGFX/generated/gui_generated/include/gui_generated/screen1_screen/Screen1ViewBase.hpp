@@ -17,7 +17,7 @@
 #include <touchgfx/containers/scrollers/ScrollList.hpp>
 #include <gui/containers/wifiItemContainer.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
-#include <touchgfx/widgets/ScalableImage.hpp>
+#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/containers/ModalWindow.hpp>
 #include <touchgfx/Color.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
@@ -57,7 +57,7 @@ protected:
     touchgfx::DrawableListItems<wifiItemContainer, 6> wifiScrollListListItems;
 
     touchgfx::DigitalClock digitalClock;
-    touchgfx::ScalableImage wifiStrengthIcon;
+    touchgfx::Image wifiStrengthIcon;
     touchgfx::ModalWindow connectAPModalWindow;
     touchgfx::ButtonWithLabel buttonCancel;
     touchgfx::ButtonWithLabel buttonOk;

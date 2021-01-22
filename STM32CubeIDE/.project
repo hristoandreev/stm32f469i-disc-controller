@@ -1560,9 +1560,19 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_modalWindowlBkg.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_wifi1_32x32.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi1_32x32.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_wifi1_64x64.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi1_64x64.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_wifi2_32x32.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi2_32x32.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_wifi2_64x64.cpp</name>
@@ -1570,14 +1580,29 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi2_64x64.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_wifi3_32x32.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi3_32x32.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_wifi3_64x64.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi3_64x64.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_wifi4_32x32.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi4_32x32.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_wifi4_64x64.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi4_64x64.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_wifi5_32x32.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi5_32x32.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_wifi5_64x64.cpp</name>

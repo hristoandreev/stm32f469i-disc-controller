@@ -3,14 +3,34 @@
 //
 
 #include <TouchGFXGeneratedHAL.hpp>
+#include <logg.h>
 #include "https_client_task.h"
 #include "HTTPClient.h"
 #include "web.h"
 
+typedef enum {
+    GET,
+    POST,
+    PUT,
+    DELETE,
+}req_type;
+
+struct web_pkg {
+    req_type type;
+    char uri[web::URI_BUFF_SIZE];
+    char *in_buff;
+    size_t in_buff_size;
+    char *out_buff;
+    size_t out_buff_size;
+    void *reqCallback;
+};
+
 osMessageQueueId_t web::web_queue_requestHandle;
 char web::response[web::RESPONSE_BUFF_SIZE];
+//char web::uri[web::URI_BUFF_SIZE];
 
 void HTTPSClient_Task(void *argument) {
+    LOG_D(LOG_DBG_ON, "HTTPSClient_Task", "Task started.");
     web::web_service(argument);
 }
 
@@ -18,17 +38,12 @@ __attribute__((noreturn))
 void web::web_service(void *arg) {
     osStatus_t res;
     HTTPResult http_res;
-//    webState state;
     HTTPClient web_client;
     struct web_pkg web_pkg {};
     touchgfx::GenericCallback<const char*> *p;
-    /* Definitions for web_queue_request */
-//    osMessageQueueId_t web_queue_requestHandle;
-    const osMessageQueueAttr_t web_queue_request_attributes = {
-            .name = "web_queue_request"
-    };
 
-    web_queue_requestHandle = osMessageQueueNew (5, sizeof(struct web_pkg), &web_queue_request_attributes);
+    web_queue_requestHandle = osMessageQueueNew (web::REQ_QUEUE_SIZE, sizeof(struct web_pkg), nullptr);
+    DBG_ASSERT(web_queue_requestHandle != nullptr, "Out of memory!!!");
 
     while(true) {
         res = osMessageQueueGet(web_queue_requestHandle, &web_pkg, nullptr, osWaitForever);
@@ -67,35 +82,25 @@ void web::web_service(void *arg) {
     }
 }
 
-webState web::get(const char *uri, const char *in_buff, size_t in_buff_size, void *callback) {
+webState web::get(const char *uri_p, const char *in_buff, size_t in_buff_size, void *callback) {
     struct web_pkg web_req {};
-//    StaticQueue_t stQueue;
-//    uint16_t mem;
     osStatus_t status;
-//    webState state;
-//    osMessageQueueAttr_t web_queue_response_attributes = {
-//            .name = "web_queue_response",
-//            .cb_mem = &stQueue,
-//            .cb_size = sizeof(stQueue),
-//            .mq_mem = &mem,
-//            .mq_size = sizeof(mem)
-//    };
 
-    web_req.uri = uri;
+    if(nullptr == uri_p) return web_ERROR;
+    DBG_ASSERT(strlen(uri_p) < web::URI_BUFF_SIZE, "URI too long!!!");
+
+    (void)strcpy(web_req.uri, uri_p);
     web_req.type = GET;
     web_req.in_buff = const_cast<char *>(response);
 //    web_req.in_buff = const_cast<char *>(in_buff);
     web_req.in_buff_size = RESPONSE_BUFF_SIZE;
 //    web_req.in_buff_size = in_buff_size;
-    web_req.out_buff = nullptr;
+    web_req.out_buff = nullptr; // TODO: Problem.
     web_req.out_buff_size = 0;
     web_req.reqCallback = callback;
 
-    status = osMessageQueuePut(web_queue_requestHandle, &web_req, 0U, 2);
+    status = osMessageQueuePut(web_queue_requestHandle, &web_req, 0U, 1);
     if(status != osOK) return web_ERROR;
-
-//    status = osMessageQueueGet(web_req.msgQHandler, &state, nullptr, timeout);
-//    if(status != osOK) return web_ERROR;
 
     return web_OK;
 }

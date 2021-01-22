@@ -42,6 +42,15 @@ public:
         accessPointAuthMode.resizeToCurrentText();
 //        accessPointAuthMode.invalidate();
     }
+
+    void setBackgroundColor(colortype color) {
+        boxWithBorder1.setColor(color);
+        boxWithBorder1.invalidate();
+    }
+
+    colortype getBackgroundColor() {
+        return boxWithBorder1.getColor();
+    }
 protected:
 };
 

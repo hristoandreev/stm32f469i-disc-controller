@@ -34,6 +34,8 @@ public:
 
     virtual void hideProgress();
 
+    virtual void clearAPsList();
+
 private:
     Screen1Presenter();
 

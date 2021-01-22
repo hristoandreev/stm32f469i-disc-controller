@@ -198,7 +198,7 @@
                   "Green": 0,
                   "Blue": 0
                 },
-                "TextId": "SingleUseId8",
+                "TextId": "Digital_clock",
                 "DisplaySeconds": false,
                 "DisplayLeadingZeroForHourIndicator": true,
                 "Alpha": 255,
@@ -219,10 +219,9 @@
                 "Moveable": false
               },
               {
-                "Type": "ScalableImage",
-                "Filename": "wifi1_64x64.png",
+                "Type": "Image",
+                "RelativeFilename": "wifi1_32x32.png",
                 "Alpha": 255,
-                "ScalingAlgorithm": "Nearest-neighbor",
                 "Name": "wifiStrengthIcon",
                 "X": 672,
                 "Y": 444,
@@ -670,10 +669,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId8",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId9",
         "IsResource": false
       },
@@ -692,6 +687,10 @@
       {
         "TextEntryId": "SingleUseId13",
         "IsResource": false
+      },
+      {
+        "TextEntryId": "Digital_clock",
+        "IsResource": true
       }
     ],
     "Name": "STM32F469I-DISCO",

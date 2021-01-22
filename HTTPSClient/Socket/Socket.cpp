@@ -20,7 +20,7 @@
 
 using std::memset;
 
-Socket::Socket() : _sock_fd(-1), _blocking(true), _timeout(1500) {
+Socket::Socket() : _sock_fd(-1), _blocking(true), _timeout(3000) {
     
 }
 

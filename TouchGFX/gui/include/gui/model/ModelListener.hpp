@@ -16,6 +16,8 @@ public:
 
     virtual void hideProgress();
 
+    virtual void clearAPsList();
+
     void bind(Model* m)
     {
         model = m;

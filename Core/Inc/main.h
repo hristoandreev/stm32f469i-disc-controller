@@ -66,6 +66,10 @@ void Error_Handler(void);
 #define ESP32_RESET_GPIO_Port GPIOB
 #define SDCARD_DETECT_Pin GPIO_PIN_2
 #define SDCARD_DETECT_GPIO_Port GPIOG
+#define STLINK_VIRT_COM_PORT_TX_Pin GPIO_PIN_10
+#define STLINK_VIRT_COM_PORT_TX_GPIO_Port GPIOB
+#define STLINK_VIRT_COM_PORT_RX_Pin GPIO_PIN_11
+#define STLINK_VIRT_COM_PORT_RX_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

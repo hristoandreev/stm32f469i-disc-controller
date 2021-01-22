@@ -40,7 +40,7 @@ protected:
     touchgfx::Unicode::UnicodeChar accessPointNameBuffer[ACCESSPOINTNAME_SIZE];
     static const uint16_t ACCESSPOINTSTRANGHT_SIZE = 20;
     touchgfx::Unicode::UnicodeChar accessPointStranghtBuffer[ACCESSPOINTSTRANGHT_SIZE];
-    static const uint16_t ACCESSPOINTAUTHMODE_SIZE = 40;
+    static const uint16_t ACCESSPOINTAUTHMODE_SIZE = 20;
     touchgfx::Unicode::UnicodeChar accessPointAuthModeBuffer[ACCESSPOINTAUTHMODE_SIZE];
 
 private:

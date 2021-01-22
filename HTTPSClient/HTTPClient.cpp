@@ -34,7 +34,7 @@
 #endif
 
 #define WARN(x, ...) std::printf("[HTTPClient : WARN]" x"\r\n", ##__VA_ARGS__)
-#define ERR(x, ...) std::printf("[HTTPClient : ERR]" x"\r\n", ##__VA_ARGS__)
+#define ERR(x, ...) std::printf("[HTTPClient : ERR] %s:%d " x"\r\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
 #define HTTP_PORT 80
 #define HTTPS_PORT 443
@@ -56,7 +56,7 @@
 #include <cmsis_os2.h>
 //#include <cstring>
 
-#define wait(a)  osDelay(a * 1000)
+#define wait(a)  osDelay((a * 1000) / portTICK_RATE_MS)
 
 static  TCPSocketConnection m_sock;
 #define CHUNK_SIZE    (256*4*8)
@@ -302,6 +302,7 @@ HTTPResult HTTPClient::connect(const char* url, HTTP_METH method, IHTTPDataOut* 
     for(retry=0; retry<MAX_RETRY; retry++) {
         int ret = m_sock.connect(host, port);
         if(ret == 0)break ;
+        wait(2); // 2 sec.
     }
     if(retry == MAX_RETRY) {
         m_sock.close();

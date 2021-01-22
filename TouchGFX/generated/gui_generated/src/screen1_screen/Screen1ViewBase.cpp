@@ -85,15 +85,14 @@ Screen1ViewBase::Screen1ViewBase() :
 
     digitalClock.setPosition(719, 448, 66, 25);
     digitalClock.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    digitalClock.setTypedText(touchgfx::TypedText(T_SINGLEUSEID8));
+    digitalClock.setTypedText(touchgfx::TypedText(T_DIGITAL_CLOCK));
     digitalClock.displayLeadingZeroForHourIndicator(true);
     digitalClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR_NO_SECONDS);
     digitalClock.setTime24Hour(23, 40, 0);
     wifiSlideMenu.add(digitalClock);
 
-    wifiStrengthIcon.setBitmap(touchgfx::Bitmap(BITMAP_WIFI1_64X64_ID));
-    wifiStrengthIcon.setPosition(672, 444, 32, 32);
-    wifiStrengthIcon.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
+    wifiStrengthIcon.setXY(672, 444);
+    wifiStrengthIcon.setBitmap(touchgfx::Bitmap(BITMAP_WIFI1_32X32_ID));
     wifiSlideMenu.add(wifiStrengthIcon);
 
     connectAPModalWindow.setBackground(touchgfx::BitmapId(BITMAP_MODALWINDOWLBKG_ID), 160, 80);

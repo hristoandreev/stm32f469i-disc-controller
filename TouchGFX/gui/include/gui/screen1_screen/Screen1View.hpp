@@ -16,8 +16,7 @@ public:
     void updateApScanningProgress(int value);
     void updateAccessPoints(char *str);
     void hideProgress();
-//    virtual void handleDragEvent(const DragEvent &evt);
-//    virtual void handleClickEvent(const ClickEvent& evt);
+    void wifiScrollListClean();
 protected:
 
 private:
@@ -28,7 +27,8 @@ private:
     touchgfx::Callback<Screen1View, const touchgfx::AbstractButton&> apPassSetBtnOkCallback;
     touchgfx::Callback<Screen1View, const touchgfx::AbstractButton&> apPassSetBtnCancelCallback;
 
-    touchgfx::Callback<Screen1View, const char*> webResCompleteCallback;
+    touchgfx::Callback<Screen1View, const char*> webApConnectCompleteCallback;
+    touchgfx::Callback<Screen1View, const char*> webGetCurrApInfoCompleteCallback;
 
     /*
      * Callback Handler Declarations
@@ -36,20 +36,62 @@ private:
     void scrollListItemSelectedHandler(int16_t itemSelected);
     void apPassSetBtnOkCallbackHandler(const touchgfx::AbstractButton& src);
     void apPassSetBtnCancelCallbackHandler(const touchgfx::AbstractButton& src);
+    void webApConnectCompleteCallbackHandler(const char* res);
+    void webGetCurrApInfoCompleteCallbackHandler(const char* res);
 
-    void webResCompleteCallbackHandler(const char* res);
+    /*
+     * Private methods.
+     */
+    int getCurrAccessPointInfo(const char *str);
+    void updateAPInfo(const char *str);
+    void setQualityTitleBarIcon(int quality);
+    void dogReset();
+    void setDigitalClock();
 
-    static const int APINFO_SIZE = 128;
+    /*
+     * Member data.
+     */
+    static const int AP_INFO_SIZE = 128;
+    static const int AP_SSID_SIZE = 256;
+    static const int AP_AUTH_MODE_SIZE = 60;
+    static const int AP_PAIR_CIPHER_SIZE = 60;
+    static const int AP_CROUP_CIPHER_SIZE = 60;
+    static const int AP_BSSID_SIZE = 30;
+    static const int AP_IP_MASK_GATEWAY_SIZE = 20;
+
+    static const int NO_CONNECTION = -1000;
+
     struct APinfo {
-        char SSID[256];
+        char SSID[AP_SSID_SIZE];
         int RSSI;
-        char AuthMode[60];
-        char PairwiseCipher[60];
-        char GroupCipher[60];
+        char AuthMode[AP_AUTH_MODE_SIZE];
+        char PairwiseCipher[AP_PAIR_CIPHER_SIZE];
+        char GroupCipher[AP_CROUP_CIPHER_SIZE];
         bool isKnow;
-    } ap_info[APINFO_SIZE];
+    } ap_info[AP_INFO_SIZE];
+
+    struct CurrApInfo {
+        bool connected;
+        char SSID[AP_SSID_SIZE];
+        int RSSI;
+        int channel;
+        int secondaryChannel;
+        char BSSID[AP_BSSID_SIZE];
+        char AuthMode[AP_AUTH_MODE_SIZE];
+        char IP[AP_IP_MASK_GATEWAY_SIZE];
+        char Mask[AP_IP_MASK_GATEWAY_SIZE];
+        char Gateway[AP_IP_MASK_GATEWAY_SIZE];
+    }curr_ap_info;
 
     size_t itemCnt;
+    int scanPeriod;
+    int tickCount;
+    int update_gadget;
+    int digitalClockCount;
+    int digitalSeconds;
+    int digitalMinutes;
+    int digitalHours;
+    bool scanDone;
 };
 
 #endif // SCREEN1VIEW_HPP

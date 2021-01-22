@@ -53,6 +53,8 @@
 #define LWIP_DNS 1
 /*----- Default Value for MEMP_NUM_TCP_PCB: 5 ---*/
 #define MEMP_NUM_TCP_PCB 8
+/*----- Default Value for LWIP_TCPIP_CORE_LOCKING: 0 ---*/
+#define LWIP_TCPIP_CORE_LOCKING 1
 /*----- Value in opt.h for MEM_ALIGNMENT: 1 -----*/
 #define MEM_ALIGNMENT 4
 /*----- Default Value for MEM_SIZE: 1600 ---*/
@@ -63,10 +65,8 @@
 #define MEMP_NUM_NETCONN 9
 /*----- Value in opt.h for LWIP_ETHERNET: LWIP_ARP || PPPOE_SUPPORT -*/
 #define LWIP_ETHERNET 1
-/*----- Default Value for LWIP_BROADCAST_PING: 0 ---*/
-#define LWIP_BROADCAST_PING 1
-/*----- Default Value for LWIP_MULTICAST_PING: 0 ---*/
-#define LWIP_MULTICAST_PING 1
+/*----- Default Value for LWIP_RAW: 0 ---*/
+#define LWIP_RAW 1
 /*----- Value in opt.h for LWIP_DNS_SECURE: (LWIP_DNS_SECURE_RAND_XID | LWIP_DNS_SECURE_NO_MULTIPLE_OUTSTANDING | LWIP_DNS_SECURE_RAND_SRC_PORT) -*/
 #define LWIP_DNS_SECURE 7
 /*----- Default Value for TCP_MSS: 536 ---*/
@@ -82,7 +82,7 @@
 /*----- Value in opt.h for TCPIP_THREAD_PRIO: 1 -----*/
 #define TCPIP_THREAD_PRIO 24
 /*----- Value in opt.h for TCPIP_MBOX_SIZE: 0 -----*/
-#define TCPIP_MBOX_SIZE 6
+#define TCPIP_MBOX_SIZE 16
 /*----- Value in opt.h for SLIPIF_THREAD_STACKSIZE: 0 -----*/
 #define SLIPIF_THREAD_STACKSIZE 1024
 /*----- Value in opt.h for SLIPIF_THREAD_PRIO: 1 -----*/
@@ -91,10 +91,12 @@
 #define DEFAULT_THREAD_STACKSIZE 1024
 /*----- Value in opt.h for DEFAULT_THREAD_PRIO: 1 -----*/
 #define DEFAULT_THREAD_PRIO 3
+/*----- Default Value for DEFAULT_RAW_RECVMBOX_SIZE: 0 ---*/
+#define DEFAULT_RAW_RECVMBOX_SIZE 4
 /*----- Value in opt.h for DEFAULT_UDP_RECVMBOX_SIZE: 0 -----*/
 #define DEFAULT_UDP_RECVMBOX_SIZE 6
 /*----- Value in opt.h for DEFAULT_TCP_RECVMBOX_SIZE: 0 -----*/
-#define DEFAULT_TCP_RECVMBOX_SIZE 6
+#define DEFAULT_TCP_RECVMBOX_SIZE 40
 /*----- Value in opt.h for DEFAULT_ACCEPTMBOX_SIZE: 0 -----*/
 #define DEFAULT_ACCEPTMBOX_SIZE 6
 /*----- Default Value for LWIP_TCPIP_TIMEOUT: 0 ---*/
@@ -109,12 +111,18 @@
 #define PPP_SUPPORT 1
 /*----- Default Value for PAP_SUPPORT: 0 ---*/
 #define PAP_SUPPORT 1
+/*----- Default Value for FSM_DEFTIMEOUT: 6 ---*/
+#define FSM_DEFTIMEOUT 2
+/*----- Default Value for LCP_ECHOINTERVAL: 0 ---*/
+#define LCP_ECHOINTERVAL 2
 /*----- Value in opt.h for LWIP_STATS: 1 -----*/
 #define LWIP_STATS 0
 /*----- Default Value for LWIP_CHECKSUM_CTRL_PER_NETIF: 0 ---*/
 #define LWIP_CHECKSUM_CTRL_PER_NETIF 1
 /*----- Default Value for LWIP_DBG_TYPES_ON: LWIP_DBG_ON ---*/
 #define LWIP_DBG_TYPES_ON LWIP_DBG_OFF
+/*----- Default Value for SOCKETS_DEBUG: LWIP_DBG_OFF ---*/
+#define SOCKETS_DEBUG LWIP_DBG_ON
 /*-----------------------------------------------------------------------------*/
 /* USER CODE BEGIN 1 */
 #define LWIP_DEBUG 1

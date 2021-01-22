@@ -85,6 +85,9 @@ include_directories(Core/Inc
                     PPPoS/App
                     PPPoS/Target
                     web
+                    lib/log
+                    lib/time
+                    lib/uart
                     )
 
 add_definitions(-DUSE_HAL_DRIVER -DSTM32F469xx -DDEBUG -DUSE_BPP=24 -DCORE_M4 -D__irq="")
@@ -106,6 +109,9 @@ file(GLOB_RECURSE SOURCES
      "gcc/startup_stm32f469xx.s"
      "wolfSSL/*.*"
      "web/*.*"
+     "lib/log/*.*"
+     "lib/time/*.*"
+     "lib/uart/*.*"
      )
 
 set (EXCLUDE_DIR
@@ -129,14 +135,21 @@ foreach (TMP_PATH ${SOURCES})
     endforeach(TMP_DIR)
 endforeach(TMP_PATH)
 
+if(USE_SEMIHOSTING)
+    add_compile_definitions(USE_SEMIHOSTING)
+endif()
+
 add_subdirectory(lib/json libs/json)
 #add_subdirectory(lib/json)
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/gcc/${Script})
 
 add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map)
-#add_link_options(-mcpu=cortex-m4 -mthumb -static --specs=nano.specs --specs=nosys.specs --specs=rdimon.specs)
-add_link_options(-mcpu=cortex-m4 -mthumb -static --specs=nano.specs --specs=nosys.specs)
+if(USE_SEMIHOSTING)
+    add_link_options(-mcpu=cortex-m4 -mthumb -static --specs=nano.specs --specs=nosys.specs --specs=rdimon.specs)
+else()
+    add_link_options(-mcpu=cortex-m4 -mthumb -static --specs=nano.specs --specs=nosys.specs)
+endif()
 add_link_options(-T ${LINKER_SCRIPT})
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
@@ -144,9 +157,12 @@ add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 target_link_libraries(${PROJECT_NAME}.elf -L${CMAKE_SOURCE_DIR}/Middlewares/ST/touchgfx/lib/core/cortex_m4f/gcc)
 target_link_libraries(${PROJECT_NAME}.elf -ltouchgfx-float-abi-hard)
 target_link_libraries(${PROJECT_NAME}.elf cjson)
-target_link_libraries(${PROJECT_NAME}.elf -Wl,--start-group -lc -lrdimon -lm -lstdc++ -lsupc++ -Wl,--end-group)
-#target_link_libraries(${PROJECT_NAME}.elf -Wl,--start-group -lc -lcjson -lrdimon -lm -lstdc++ -lsupc++ -Wl,--end-group)
+if(USE_SEMIHOSTING)
+    target_link_libraries(${PROJECT_NAME}.elf -lrdimon)
+endif()
+target_link_libraries(${PROJECT_NAME}.elf -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group)
 #target_link_libraries(${PROJECT_NAME}.elf -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group)
+#target_link_libraries(${PROJECT_NAME}.elf -Wl,--start-group -lc -lcjson -lrdimon -lm -lstdc++ -lsupc++ -Wl,--end-group)
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)

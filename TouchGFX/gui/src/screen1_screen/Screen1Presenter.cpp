@@ -28,3 +28,7 @@ void Screen1Presenter::updateProgress(int value) {
 void Screen1Presenter::hideProgress() {
     view.hideProgress();
 }
+
+void Screen1Presenter::clearAPsList() {
+    view.wifiScrollListClean();
+}

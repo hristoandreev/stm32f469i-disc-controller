@@ -31,6 +31,8 @@
 #include "stm32469i_discovery_sdram.h"
 #include "stm32469i_discovery_qspi.h"
 #include "pppd.h"
+#include "https_client_task.h"
+#include "dbg.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -70,6 +72,7 @@ SD_HandleTypeDef hsd;
 DMA_HandleTypeDef hdma_sdio_rx;
 DMA_HandleTypeDef hdma_sdio_tx;
 
+UART_HandleTypeDef huart3;
 UART_HandleTypeDef huart6;
 
 SDRAM_HandleTypeDef hsdram1;
@@ -93,12 +96,7 @@ osThreadId_t PPPoSTaskHandle;
 const osThreadAttr_t PPPoSTask_attributes = {
   .name = "PPPoSTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
-};
-/* Definitions for web_queue_response */
-osMessageQueueId_t web_queue_responseHandle;
-const osMessageQueueAttr_t web_queue_response_attributes = {
-  .name = "web_queue_response"
+  .stack_size = 2048 * 4
 };
 /* USER CODE BEGIN PV */
 
@@ -119,6 +117,7 @@ static void MX_SDIO_SD_Init(void);
 static void MX_USART6_UART_Init(void);
 static void MX_RNG_Init(void);
 static void MX_RTC_Init(void);
+static void MX_USART3_UART_Init(void);
 void TouchGFX_Task(void *argument);
 void HTTPSClient_Task(void *argument);
 void PPPoS_Task(void *argument);
@@ -132,7 +131,6 @@ void PPPoS_Task(void *argument);
 __attribute__ ((used))
 static volatile int uxTopUsedPriority;
 
-extern void initialise_monitor_handles();
 /* USER CODE END 0 */
 
 /**
@@ -143,7 +141,10 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
     uxTopUsedPriority = configMAX_PRIORITIES - 1;
-//    initialise_monitor_handles();
+#if USE_SEMIHOSTING
+    extern void initialise_monitor_handles();
+    initialise_monitor_handles();
+#endif
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -177,6 +178,7 @@ int main(void)
   MX_USART6_UART_Init();
   MX_RNG_Init();
   MX_RTC_Init();
+  MX_USART3_UART_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
@@ -199,10 +201,6 @@ int main(void)
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
-
-  /* Create the queue(s) */
-  /* creation of web_queue_response */
-  web_queue_responseHandle = osMessageQueueNew (5, sizeof(uint16_t), &web_queue_response_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -753,6 +751,39 @@ static void MX_SDIO_SD_Init(void)
   /* USER CODE BEGIN SDIO_Init 2 */
 
   /* USER CODE END SDIO_Init 2 */
+
+}
+
+/**
+  * @brief USART3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART3_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART3_Init 0 */
+
+  /* USER CODE END USART3_Init 0 */
+
+  /* USER CODE BEGIN USART3_Init 1 */
+
+  /* USER CODE END USART3_Init 1 */
+  huart3.Instance = USART3;
+  huart3.Init.BaudRate = 115200;
+  huart3.Init.WordLength = UART_WORDLENGTH_8B;
+  huart3.Init.StopBits = UART_STOPBITS_1;
+  huart3.Init.Parity = UART_PARITY_NONE;
+  huart3.Init.Mode = UART_MODE_TX;
+  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART3_Init 2 */
+
+  /* USER CODE END USART3_Init 2 */
 
 }
 
