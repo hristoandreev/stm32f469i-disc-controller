@@ -65,7 +65,9 @@ void Model::webResCompleteCallbackHandler(const char *res) {
     scanPeriod = 0;
     if (res != nullptr) {
         is_scanning = false;
+#ifndef SIMULATOR
         LOG_I(LOG_DBG_ON, "Model::webResCompleteCallbackHandler", "Scanning done.");
+#endif
         modelListener->wifiScanningDone(const_cast<char *>(res));
     }
 }

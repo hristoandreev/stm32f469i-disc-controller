@@ -12,11 +12,11 @@ public:
 
     virtual void wifiScanningDone(char *res) {};
 
-    virtual void updateProgress(int value);
+    virtual void updateProgress(int value) {};
 
-    virtual void hideProgress();
+    virtual void hideProgress() {};
 
-    virtual void clearAPsList();
+    virtual void clearAPsList() {};
 
     void bind(Model* m)
     {

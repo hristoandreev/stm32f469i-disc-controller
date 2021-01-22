@@ -1,13 +1,12 @@
 #include <gui/screen1_screen/Screen1View.hpp>
 #include <cstring>
-#include <string>
 #include <BitmapDatabase.hpp>
-#include <logg.h>
-#include "myTime.h"
 
 #ifndef SIMULATOR
 #include "cJSON.h"
 #include "web.h"
+#include <logg.h>
+#include "myTime.h"
 #endif
 
 Screen1View::Screen1View() :
@@ -172,12 +171,15 @@ void Screen1View::scrollListItemSelectedHandler(int16_t itemSelected) {
         connectAPModalWindow.show();
         connectAPModalWindow.invalidate();
     } else {
-        web web;
+
         char uri[300];
         setQualityTitleBarIcon(NO_CONNECTION);
         (void)sprintf(uri, "http://192.168.3.1/wifi?cmd=connect&ssid=%s", ssid);
+#ifndef SIMULATOR
+        web web;
         (void)web.get(uri, nullptr, 0, &webApConnectCompleteCallback);
         LOG_I(LOG_DBG_ON, "Screen1View::scrollListItemSelectedHandler", "Connecting to WI-FI...");
+#endif
     }
 }
 
@@ -193,10 +195,11 @@ void Screen1View::apPassSetBtnOkCallbackHandler(const AbstractButton &src) {
     (void)Unicode::toUTF8(passwordBuffer, utf8Password, sizeof(utf8Password));
     (void)Unicode::toUTF8(titleBuffer, utf8SSID, sizeof(utf8SSID));
     (void)sprintf(uri, "http://192.168.3.1/wifi?cmd=connect&ssid=%s&pass=%s", utf8SSID, utf8Password);
-
+#ifndef SIMULATOR
     web web;
     (void)web.get(uri, nullptr, 0, &webApConnectCompleteCallback);
     LOG_I(LOG_DBG_ON, "Screen1View::apPassSetBtnOkCallbackHandler", "Connecting to WI-FI...");
+#endif
 }
 
 void Screen1View::apPassSetBtnCancelCallbackHandler(const AbstractButton &src) {
@@ -206,7 +209,9 @@ void Screen1View::apPassSetBtnCancelCallbackHandler(const AbstractButton &src) {
 
 void Screen1View::webApConnectCompleteCallbackHandler(const char *res) {
     if(nullptr != res) {
+#ifndef SIMULATOR
         LOG_I(LOG_DBG_ON, "Screen1View::webApConnectCompleteCallbackHandler", "Done.");
+#endif
         updateAPInfo(res);
     }
 }
@@ -215,7 +220,9 @@ void Screen1View::handleTickEvent() {
 
     if(scanDone) {
         wifiScrollList.setNumberOfItems(itemCnt); // Update access points scroll list.
+#ifndef SIMULATOR
         LOG_I(LOG_DBG_ON, "Screen1View::handleTickEvent", "Refresh access point lists with %d items.", itemCnt);
+#endif
         scanDone = false;
     }
 
@@ -224,7 +231,9 @@ void Screen1View::handleTickEvent() {
     if(update_gadget >= MS_TO_TICK(2000)) {
         update_gadget = 0;
         wifiStrengthIcon.invalidate();
+#ifndef SIMULATOR
         LOG_I(LOG_DBG_ON, "Screen1View::handleTickEvent", "Refresh WI-FI quality icon.");
+#endif
     }
 
     /* Period ~ 2s */
@@ -232,9 +241,11 @@ void Screen1View::handleTickEvent() {
     if(scanPeriod == MS_TO_TICK(2000)) {
         scanPeriod = 0;
         dogReset();
+#ifndef SIMULATOR
         web web;
         (void)web.get("http://192.168.3.1/wifi?cmd=get_current_ap_info", nullptr, 0, &webGetCurrApInfoCompleteCallback);
         LOG_I(LOG_DBG_ON, "Screen1View::handleTickEvent", "Getting WI-FI info...");
+#endif
     }
 
     /* Timeout ~ 3s */
@@ -242,7 +253,9 @@ void Screen1View::handleTickEvent() {
     if(tickCount >= MS_TO_TICK(3000)) {
         dogReset();
         scanPeriod = 0;
+#ifndef SIMULATOR
         LOG_W(LOG_DBG_ON, "Screen1View::handleTickEvent", "Timeout expired!");
+#endif
         setQualityTitleBarIcon(NO_CONNECTION);
     }
 
@@ -265,7 +278,9 @@ void Screen1View::handleTickEvent() {
 void Screen1View::webGetCurrApInfoCompleteCallbackHandler(const char *res) {
     scanPeriod = 0;
     if(nullptr != res) {
+#ifndef SIMULATOR
         LOG_I(LOG_DBG_ON, "Screen1View::webGetCurrApInfoCompleteCallbackHandler", "Done.");
+#endif
         updateAPInfo(res);
     }
 }
@@ -348,12 +363,12 @@ int Screen1View::getCurrAccessPointInfo(const char *str) {
 
     return 0;
 
-    err:
 #ifndef SIMULATOR
+    err:
     cJSON_Delete(ap_info_json);
     LOG_E(LOG_DBG_ON, "Screen1View::getCurrAccessPointInfo", "Pattern error! -> %s", str);
-#endif
     return -1;
+#endif
 }
 
 void Screen1View::setQualityTitleBarIcon(int quality) {
@@ -374,13 +389,17 @@ void Screen1View::updateAPInfo(const char *str) {
         dogReset();
         if(curr_ap_info.connected) {
             setQualityTitleBarIcon(curr_ap_info.RSSI);
+#ifndef SIMULATOR
             LOG_I(LOG_DBG_ON, "Connected to ","%s -> %d dbm, %s, %d, %d, %s,\r\n\tIP: %s\r\n\tMASK: %s\r\n\tGateway: %s",
                   curr_ap_info.SSID, curr_ap_info.RSSI, curr_ap_info.AuthMode, curr_ap_info.channel,
                   curr_ap_info.secondaryChannel, curr_ap_info.BSSID, curr_ap_info.IP, curr_ap_info.Mask,
                   curr_ap_info.Gateway);
+#endif
         } else {
             setQualityTitleBarIcon(NO_CONNECTION);
+#ifndef SIMULATOR
             LOG_I(LOG_DBG_ON, "Screen1View::updateAPInfo", "WI-FI disconnected.");
+#endif
         }
     }
 }
@@ -390,6 +409,7 @@ void Screen1View::dogReset() {
 }
 
 void Screen1View::setDigitalClock() {
+#ifndef SIMULATOR
     struct timeval timeVal {};
     struct tm *nowtm;
 
@@ -400,4 +420,5 @@ void Screen1View::setDigitalClock() {
     digitalHours = nowtm->tm_hour;
     digitalClock.setTime24Hour(digitalHours, digitalMinutes, 0);
     LOG_I(LOG_DBG_ON, "Screen1View::setDigitalClock", "Clock is synchronized to %02d:%02d", digitalHours, digitalMinutes);
+#endif
 }

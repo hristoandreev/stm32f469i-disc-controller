@@ -1,10 +1,8 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
-#include <cstdint>
-#ifndef SIMULATOR
 #include <touchgfx/Callback.hpp>
-#endif
+#include <cstdint>
 
 #define MS_TO_TICK(ms) (static_cast<int>(ms / 16)) // Tick period = 16ms.
 
