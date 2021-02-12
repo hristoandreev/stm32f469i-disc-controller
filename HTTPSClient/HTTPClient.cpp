@@ -19,22 +19,14 @@
 
 #include "../wolfSSL/wolfSSL.I-CUBE-wolfSSL_conf.h"
 #include <cstdio>
-//#include <iostream>
-//Debug is disabled by default
-#if 0
-//Enable debug
+#include "logg.h"
 
-#define DBG(x, ...) std::printf("[HTTPClient : DBG]" x"\r\n", ##__VA_ARGS__);
+#define DBG(x, ...) LOG_D(LOG_DBG_ON, "HTTPClient::%s", "[HTTPClient : DBG]" x, __FUNCTION__, ##__VA_ARGS__);  //std::printf("[HTTPClient : DBG]" x"\r\n", ##__VA_ARGS__);
 
 #define WOLF_DEBUG_ON   // wolfSSL_Debugging_ON() ;
-#else
-//Disable debug
-#define DBG(x, ...)
-#define WOLF_DEBUG_ON 
-#endif
 
-#define WARN(x, ...) std::printf("[HTTPClient : WARN]" x"\r\n", ##__VA_ARGS__)
-#define ERR(x, ...) std::printf("[HTTPClient : ERR] %s:%d " x"\r\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#define WARN(x, ...) LOG_W(LOG_DBG_ON, "HTTPClient::%s", "[HTTPClient : WARN]" x, __FUNCTION__, ##__VA_ARGS__) //std::printf("[HTTPClient : WARN]" x"\r\n", ##__VA_ARGS__)
+#define ERR(x, ...) LOG_E(LOG_DBG_ON, "HTTPClient::%s", "[HTTPClient : ERR] %s:%d " x, __FUNCTION__, __FILE__, __LINE__, ##__VA_ARGS__) //std::printf("[HTTPClient : ERR] %s:%d " x"\r\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
 #define HTTP_PORT 80
 #define HTTPS_PORT 443
@@ -52,17 +44,16 @@
 #include "wolfssl/ssl.h"
 
 #include "HTTPClient.h"
-#include "TCPSocketConnection.h"
+//#include "TCPSocketConnection.h"
 #include <cmsis_os2.h>
-//#include <cstring>
 
 #define wait(a)  osDelay((a * 1000) / portTICK_RATE_MS)
 
-static  TCPSocketConnection m_sock;
+//static  TCPSocketConnection m_sock;
 #define CHUNK_SIZE    (256*4*8)
-#define SEND_BUF_SIZE 512
-static char send_buf[SEND_BUF_SIZE] ;
-static char *send_buf_p ;
+//#define SEND_BUF_SIZE 512
+//static char send_buf[SEND_BUF_SIZE] ;
+//static char *send_buf_p ;
 
 static int SocketReceive(WOLFSSL* ssl, char *buf, int sz, void *sock)
 {
@@ -302,7 +293,7 @@ HTTPResult HTTPClient::connect(const char* url, HTTP_METH method, IHTTPDataOut* 
     for(retry=0; retry<MAX_RETRY; retry++) {
         int ret = m_sock.connect(host, port);
         if(ret == 0)break ;
-        wait(2); // 2 sec.
+//        wait(1); // 1 sec.
     }
     if(retry == MAX_RETRY) {
         m_sock.close();
@@ -656,7 +647,7 @@ HTTPResult HTTPClient::connect(const char* url, HTTP_METH method, IHTTPDataOut* 
             readLen = recvContentLength;
         }
 
-        DBG("Retrieving %zu bytes", readLen);
+        DBG("Retrieving %u bytes", readLen);
 
         do {
             (void)pDataIn->write(buf, MIN(trfLen, readLen));
@@ -721,7 +712,7 @@ HTTPResult HTTPClient::recv(char* buf, size_t minLen, size_t maxLen, size_t* pRe
             buf[readLen] = 0;
             DBG("wolfSSL_read:%s\n", buf);
         } else {
-            ERR("wolfSSL_read, ret = %zu", readLen) ;
+            ERR("wolfSSL_read, ret = %u", readLen) ;
             return HTTP_ERROR ;
         }
         DBG("Read %d bytes", readLen);
@@ -848,7 +839,7 @@ HTTPResult HTTPClient::parseURL(const char* url, char* scheme, size_t maxSchemeL
     }
 
     if( maxSchemeLen < static_cast<unsigned int>(hostPtr - schemePtr + 1)) { //including NULL-terminating char
-        WARN("Scheme str is too small (%zu >= %d)", maxSchemeLen, hostPtr - schemePtr + 1);
+        WARN("Scheme str is too small (%u >= %d)", maxSchemeLen, hostPtr - schemePtr + 1);
         return HTTP_PARSE;
     }
     (void)memcpy(scheme, schemePtr, hostPtr - schemePtr);
@@ -875,7 +866,7 @@ HTTPResult HTTPClient::parseURL(const char* url, char* scheme, size_t maxSchemeL
     }
 
     if( maxHostLen < hostLen + 1 ) { //including NULL-terminating char
-        WARN("Host str is too small (%zu >= %u)", maxHostLen, hostLen + 1);
+        WARN("Host str is too small (%u >= %u)", maxHostLen, hostLen + 1);
         return HTTP_PARSE;
     }
     (void)memcpy(host, hostPtr, hostLen);
@@ -890,7 +881,7 @@ HTTPResult HTTPClient::parseURL(const char* url, char* scheme, size_t maxSchemeL
     }
 
     if( maxPathLen < pathLen + 1 ) { //including NULL-terminating char
-        WARN("Path str is too small (%zu >= %u)", maxPathLen, pathLen + 1);
+        WARN("Path str is too small (%u >= %u)", maxPathLen, pathLen + 1);
         return HTTP_PARSE;
     }
     (void)memcpy(path, pathPtr, pathLen);

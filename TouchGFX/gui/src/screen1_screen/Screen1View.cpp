@@ -5,7 +5,7 @@
 #ifndef SIMULATOR
 #include "cJSON.h"
 #include "web.h"
-#include <logg.h>
+#include "logg.h"
 #include "myTime.h"
 #endif
 
@@ -13,8 +13,11 @@ Screen1View::Screen1View() :
     scrollListItemSelectedCallback(this, &Screen1View::scrollListItemSelectedHandler),
     apPassSetBtnOkCallback(this, &Screen1View::apPassSetBtnOkCallbackHandler),
     apPassSetBtnCancelCallback(this, &Screen1View::apPassSetBtnCancelCallbackHandler),
+#ifndef SIMULATOR
     webApConnectCompleteCallback(this, &Screen1View::webApConnectCompleteCallbackHandler),
     webGetCurrApInfoCompleteCallback(this, &Screen1View::webGetCurrApInfoCompleteCallbackHandler),
+    webGetABVBGCompleteCallback(this, &Screen1View::webGetABVBGCompleteCallbackHandler),
+#endif
     itemCnt(0),
     scanPeriod(0),
     tickCount(0),
@@ -45,7 +48,6 @@ Screen1View::Screen1View() :
 
 void Screen1View::setupScreen() {
     Screen1ViewBase::setupScreen();
-
 }
 
 void Screen1View::tearDownScreen() {
@@ -90,7 +92,7 @@ void Screen1View::wifiScrollListUpdateItem(wifiItemContainer& item, int16_t item
 /*
  * Update access points.
  */
-void Screen1View::updateAccessPoints(char *str) {
+void Screen1View::updateAccessPoints(const char *str) {
 #ifndef SIMULATOR
     LOG_I(LOG_DBG_ON, "Screen1View::updateAccessPoints", "Parsing...");
     itemCnt = 0;
@@ -176,8 +178,7 @@ void Screen1View::scrollListItemSelectedHandler(int16_t itemSelected) {
         setQualityTitleBarIcon(NO_CONNECTION);
         (void)sprintf(uri, "http://192.168.3.1/wifi?cmd=connect&ssid=%s", ssid);
 #ifndef SIMULATOR
-        web web;
-        (void)web.get(uri, nullptr, 0, &webApConnectCompleteCallback);
+        (void)web::get(uri, nullptr, 0, &webApConnectCompleteCallback);
         LOG_I(LOG_DBG_ON, "Screen1View::scrollListItemSelectedHandler", "Connecting to WI-FI...");
 #endif
     }
@@ -196,8 +197,7 @@ void Screen1View::apPassSetBtnOkCallbackHandler(const AbstractButton &src) {
     (void)Unicode::toUTF8(titleBuffer, utf8SSID, sizeof(utf8SSID));
     (void)sprintf(uri, "http://192.168.3.1/wifi?cmd=connect&ssid=%s&pass=%s", utf8SSID, utf8Password);
 #ifndef SIMULATOR
-    web web;
-    (void)web.get(uri, nullptr, 0, &webApConnectCompleteCallback);
+    (void)web::get(uri, nullptr, 0, &webApConnectCompleteCallback);
     LOG_I(LOG_DBG_ON, "Screen1View::apPassSetBtnOkCallbackHandler", "Connecting to WI-FI...");
 #endif
 }
@@ -207,15 +207,16 @@ void Screen1View::apPassSetBtnCancelCallbackHandler(const AbstractButton &src) {
     connectAPModalWindow.invalidate();
 }
 
-void Screen1View::webApConnectCompleteCallbackHandler(const char *res) {
-    if(nullptr != res) {
 #ifndef SIMULATOR
+void Screen1View::webApConnectCompleteCallbackHandler(HTTPResult status, const char *res) {
+    if(HTTP_OK == status) {
         LOG_I(LOG_DBG_ON, "Screen1View::webApConnectCompleteCallbackHandler", "Done.");
-#endif
         updateAPInfo(res);
     }
 }
+#endif
 
+/* Call every 16ms when current screen is visible. */
 void Screen1View::handleTickEvent() {
 
     if(scanDone) {
@@ -242,8 +243,9 @@ void Screen1View::handleTickEvent() {
         scanPeriod = 0;
         dogReset();
 #ifndef SIMULATOR
-        web web;
-        (void)web.get("http://192.168.3.1/wifi?cmd=get_current_ap_info", nullptr, 0, &webGetCurrApInfoCompleteCallback);
+        (void)web::get("http://192.168.3.1/wifi?cmd=get_current_ap_info", nullptr, 0, &webGetCurrApInfoCompleteCallback);
+//        (void)web::get("http://77.68.64.19/", nullptr, 0, &webGetABVBGCompleteCallback);
+        (void)web::get("http://abv.bg/", nullptr, 0, &webGetABVBGCompleteCallback);
         LOG_I(LOG_DBG_ON, "Screen1View::handleTickEvent", "Getting WI-FI info...");
 #endif
     }
@@ -272,18 +274,19 @@ void Screen1View::handleTickEvent() {
             }
         }
         digitalClock.setTime24Hour(digitalHours, digitalMinutes, 0);
+        digitalClock.invalidate();
     }
 }
 
-void Screen1View::webGetCurrApInfoCompleteCallbackHandler(const char *res) {
-    scanPeriod = 0;
-    if(nullptr != res) {
 #ifndef SIMULATOR
+void Screen1View::webGetCurrApInfoCompleteCallbackHandler(HTTPResult status, const char *res) {
+    scanPeriod = 0;
+    if(HTTP_OK == status) {
         LOG_I(LOG_DBG_ON, "Screen1View::webGetCurrApInfoCompleteCallbackHandler", "Done.");
-#endif
         updateAPInfo(res);
     }
 }
+#endif
 
 int Screen1View::getCurrAccessPointInfo(const char *str) {
 #ifndef SIMULATOR
@@ -419,6 +422,15 @@ void Screen1View::setDigitalClock() {
     digitalMinutes = nowtm->tm_min;
     digitalHours = nowtm->tm_hour;
     digitalClock.setTime24Hour(digitalHours, digitalMinutes, 0);
+    digitalClock.invalidate();
     LOG_I(LOG_DBG_ON, "Screen1View::setDigitalClock", "Clock is synchronized to %02d:%02d", digitalHours, digitalMinutes);
 #endif
 }
+
+#ifndef SIMULATOR
+void Screen1View::webGetABVBGCompleteCallbackHandler(HTTPResult status, const char *res) {
+    if(HTTP_OK == status) {
+        LOG_I(LOG_DBG_ON, "Screen1View::webGetABVBGCompleteCallbackHandler", "http://abv.bg/ -> %s", res);
+    }
+}
+#endif

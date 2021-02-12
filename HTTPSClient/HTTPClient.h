@@ -30,7 +30,10 @@ class HTTPData;
 
 #include <cstdint>
 #include "IHTTPData.h"
+#include "TCPSocketConnection.h"
 //#include "mbed.h"
+
+#define SEND_BUF_SIZE 512
 
 ///HTTP client results
 enum HTTPResult {
@@ -167,6 +170,9 @@ private:
     uint16_t port;
     struct WOLFSSL_CTX* ctx ;
     struct WOLFSSL    * ssl ;
+    TCPSocketConnection m_sock;
+    char send_buf[SEND_BUF_SIZE] ;
+    char *send_buf_p ;
 };
 
 //Including data containers here for more convenience

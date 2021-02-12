@@ -17,7 +17,7 @@ void Screen1Presenter::deactivate()
 
 }
 
-void Screen1Presenter::wifiScanningDone(char *res) {
+void Screen1Presenter::wifiScanningDone(const char *res) {
     view.updateAccessPoints(res);
 }
 

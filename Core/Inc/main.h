@@ -32,7 +32,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <dbg.h>
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -47,7 +47,7 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+#define LWIP_PLATFORM_DIAG(x) do {dbgPrint x;} while(0)
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

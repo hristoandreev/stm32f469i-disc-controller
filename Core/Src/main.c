@@ -84,11 +84,11 @@ const osThreadAttr_t TouchGFXTask_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 2048 * 4
 };
-/* Definitions for HTTPSClientTask */
-osThreadId_t HTTPSClientTaskHandle;
-const osThreadAttr_t HTTPSClientTask_attributes = {
-  .name = "HTTPSClientTask",
-  .priority = (osPriority_t) osPriorityNormal,
+/* Definitions for HTTPSClientExternal */
+osThreadId_t HTTPSClientExternalHandle;
+const osThreadAttr_t HTTPSClientExternal_attributes = {
+  .name = "HTTPSClientExternal",
+  .priority = (osPriority_t) osPriorityLow,
   .stack_size = 5120 * 4
 };
 /* Definitions for PPPoSTask */
@@ -97,6 +97,13 @@ const osThreadAttr_t PPPoSTask_attributes = {
   .name = "PPPoSTask",
   .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 2048 * 4
+};
+/* Definitions for HTTPSClientInternal */
+osThreadId_t HTTPSClientInternalHandle;
+const osThreadAttr_t HTTPSClientInternal_attributes = {
+  .name = "HTTPSClientInternal",
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 1024 * 4
 };
 /* USER CODE BEGIN PV */
 
@@ -119,8 +126,9 @@ static void MX_RNG_Init(void);
 static void MX_RTC_Init(void);
 static void MX_USART3_UART_Init(void);
 void TouchGFX_Task(void *argument);
-void HTTPSClient_Task(void *argument);
+void HTTPSClientExternal_Task(void *argument);
 void PPPoS_Task(void *argument);
+void HTTPSClientInternal_Task(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -210,11 +218,14 @@ int main(void)
   /* creation of TouchGFXTask */
   TouchGFXTaskHandle = osThreadNew(TouchGFX_Task, NULL, &TouchGFXTask_attributes);
 
-  /* creation of HTTPSClientTask */
-  HTTPSClientTaskHandle = osThreadNew(HTTPSClient_Task, NULL, &HTTPSClientTask_attributes);
+  /* creation of HTTPSClientExternal */
+  HTTPSClientExternalHandle = osThreadNew(HTTPSClientExternal_Task, NULL, &HTTPSClientExternal_attributes);
 
   /* creation of PPPoSTask */
   PPPoSTaskHandle = osThreadNew(PPPoS_Task, NULL, &PPPoSTask_attributes);
+
+  /* creation of HTTPSClientInternal */
+  HTTPSClientInternalHandle = osThreadNew(HTTPSClientInternal_Task, NULL, &HTTPSClientInternal_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -997,22 +1008,22 @@ __weak void TouchGFX_Task(void *argument)
   /* USER CODE END 5 */
 }
 
-/* USER CODE BEGIN Header_HTTPSClient_Task */
+/* USER CODE BEGIN Header_HTTPSClientExternal_Task */
 /**
-* @brief Function implementing the HTTPSClientTask thread.
+* @brief Function implementing the HTTPSClientExternal thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_HTTPSClient_Task */
-__weak void HTTPSClient_Task(void *argument)
+/* USER CODE END Header_HTTPSClientExternal_Task */
+__weak void HTTPSClientExternal_Task(void *argument)
 {
-  /* USER CODE BEGIN HTTPSClient_Task */
+  /* USER CODE BEGIN HTTPSClientExternal_Task */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END HTTPSClient_Task */
+  /* USER CODE END HTTPSClientExternal_Task */
 }
 
 /* USER CODE BEGIN Header_PPPoS_Task */
@@ -1031,6 +1042,24 @@ __weak void PPPoS_Task(void *argument)
     osDelay(1);
   }
   /* USER CODE END PPPoS_Task */
+}
+
+/* USER CODE BEGIN Header_HTTPSClientInternal_Task */
+/**
+* @brief Function implementing the HTTPSClientInternal thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_HTTPSClientInternal_Task */
+__weak void HTTPSClientInternal_Task(void *argument)
+{
+  /* USER CODE BEGIN HTTPSClientInternal_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END HTTPSClientInternal_Task */
 }
 
  /**

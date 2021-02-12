@@ -59,6 +59,8 @@
 #define MEM_ALIGNMENT 4
 /*----- Default Value for MEM_SIZE: 1600 ---*/
 #define MEM_SIZE 8192
+/*----- Default Value for MEMP_OVERFLOW_CHECK: 0 ---*/
+#define MEMP_OVERFLOW_CHECK 2
 /*----- Default Value for MEMP_NUM_NETBUF: 2 ---*/
 #define MEMP_NUM_NETBUF 8
 /*----- Default Value for MEMP_NUM_NETCONN: 4 ---*/
@@ -119,14 +121,12 @@
 #define LWIP_STATS 0
 /*----- Default Value for LWIP_CHECKSUM_CTRL_PER_NETIF: 0 ---*/
 #define LWIP_CHECKSUM_CTRL_PER_NETIF 1
-/*----- Default Value for LWIP_DBG_TYPES_ON: LWIP_DBG_ON ---*/
-#define LWIP_DBG_TYPES_ON LWIP_DBG_OFF
-/*----- Default Value for SOCKETS_DEBUG: LWIP_DBG_OFF ---*/
-#define SOCKETS_DEBUG LWIP_DBG_ON
 /*-----------------------------------------------------------------------------*/
 /* USER CODE BEGIN 1 */
 #define LWIP_DEBUG 1
 #define LWIP_IGMP 1
+#define MEMP_OVERFLOW_CHECK 1
+#define MQTT_DEBUG LWIP_DBG_ON
 /* USER CODE END 1 */
 
 #ifdef __cplusplus

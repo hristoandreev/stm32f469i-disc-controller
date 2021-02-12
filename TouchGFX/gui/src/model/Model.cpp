@@ -2,7 +2,6 @@
 #include <gui/model/ModelListener.hpp>
 
 #ifndef SIMULATOR
-#include "web.h"
 #include "logg.h"
 #endif
 
@@ -11,8 +10,10 @@ Model::Model() : modelListener(nullptr),
                  tickCount(0),
                  scanPeriod(MS_TO_TICK(6000) - 1),
                  is_scanning(true),
-                 progress(0),
-                 webResCompleteCallback(this, &Model::webResCompleteCallbackHandler)
+                 progress(0)
+#ifndef SIMULATOR
+                 ,webResCompleteCallback(this, &Model::webResCompleteCallbackHandler)
+#endif
 {
 
 }
@@ -25,8 +26,7 @@ void Model::tick() {
     if(scanPeriod == MS_TO_TICK(6000)) {
         is_scanning = true;
         if (is_http_ready) {
-            web web;
-            webState state = web.get("http://192.168.3.1/wifi?cmd=scan", nullptr, 0, &webResCompleteCallback);
+            webState state = web::get("http://192.168.3.1/wifi?cmd=scan", nullptr, 0, &webResCompleteCallback);
             if(state != web_OK) {
 //                tickCount = 0;
                 scanPeriod = 0;
@@ -59,15 +59,15 @@ void Model::tick() {
 #endif
 }
 
-void Model::webResCompleteCallbackHandler(const char *res) {
+#ifndef SIMULATOR
+void Model::webResCompleteCallbackHandler(HTTPResult status, const char *res) {
     is_http_ready = true;
     tickCount = 0;
     scanPeriod = 0;
-    if (res != nullptr) {
+    if (HTTP_OK == status) {
         is_scanning = false;
-#ifndef SIMULATOR
         LOG_I(LOG_DBG_ON, "Model::webResCompleteCallbackHandler", "Scanning done.");
-#endif
-        modelListener->wifiScanningDone(const_cast<char *>(res));
+        modelListener->wifiScanningDone(res);
     }
 }
+#endif

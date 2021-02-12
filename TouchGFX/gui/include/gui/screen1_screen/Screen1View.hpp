@@ -4,6 +4,10 @@
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 
+#ifndef SIMULATOR
+#include "web.h"
+#endif
+
 class Screen1View : public Screen1ViewBase
 {
 public:
@@ -14,7 +18,7 @@ public:
     virtual void wifiScrollListUpdateItem(wifiItemContainer& item, int16_t itemIndex);
     virtual void handleTickEvent();
     void updateApScanningProgress(int value);
-    void updateAccessPoints(char *str);
+    void updateAccessPoints(const char *str);
     void hideProgress();
     void wifiScrollListClean();
 protected:
@@ -26,19 +30,22 @@ private:
     touchgfx::Callback<Screen1View, int16_t> scrollListItemSelectedCallback;
     touchgfx::Callback<Screen1View, const touchgfx::AbstractButton&> apPassSetBtnOkCallback;
     touchgfx::Callback<Screen1View, const touchgfx::AbstractButton&> apPassSetBtnCancelCallback;
-
-    touchgfx::Callback<Screen1View, const char*> webApConnectCompleteCallback;
-    touchgfx::Callback<Screen1View, const char*> webGetCurrApInfoCompleteCallback;
-
+#ifndef SIMULATOR
+    touchgfx::Callback<Screen1View, HTTPResult, const char*> webApConnectCompleteCallback;
+    touchgfx::Callback<Screen1View, HTTPResult, const char*> webGetCurrApInfoCompleteCallback;
+    touchgfx::Callback<Screen1View, HTTPResult, const char*> webGetABVBGCompleteCallback;
+#endif
     /*
      * Callback Handler Declarations
      */
     void scrollListItemSelectedHandler(int16_t itemSelected);
     void apPassSetBtnOkCallbackHandler(const touchgfx::AbstractButton& src);
     void apPassSetBtnCancelCallbackHandler(const touchgfx::AbstractButton& src);
-    void webApConnectCompleteCallbackHandler(const char* res);
-    void webGetCurrApInfoCompleteCallbackHandler(const char* res);
-
+#ifndef SIMULATOR
+    void webApConnectCompleteCallbackHandler(HTTPResult status, const char* res);
+    void webGetCurrApInfoCompleteCallbackHandler(HTTPResult status, const char* res);
+    void webGetABVBGCompleteCallbackHandler(HTTPResult status, const char* res);
+#endif
     /*
      * Private methods.
      */
