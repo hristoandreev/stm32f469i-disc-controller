@@ -9,6 +9,8 @@
 #include <touchgfx/Texts.hpp>
 #include <touchgfx/hal/HAL.hpp>
 #include<platform/driver/lcd/LCD24bpp.hpp>
+#include <gui/mqttclientapp_screen/mqttClientAppView.hpp>
+#include <gui/mqttclientapp_screen/mqttClientAppPresenter.hpp>
 #include <gui/screen1_screen/Screen1View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 
@@ -28,6 +30,19 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
 /*
  * Screen Transition Declarations
  */
+
+// mqttClientApp
+
+void FrontendApplicationBase::gotomqttClientAppScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotomqttClientAppScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotomqttClientAppScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<mqttClientAppView, mqttClientAppPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
 
 // Screen1
 

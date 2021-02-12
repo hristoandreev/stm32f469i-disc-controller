@@ -7,6 +7,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 
 Screen1ViewBase::Screen1ViewBase() :
+    buttonCallback(this, &Screen1ViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &Screen1ViewBase::flexButtonCallbackHandler),
     updateItemCallback(this, &Screen1ViewBase::updateItemCallbackHandler)
 {
 
@@ -15,16 +17,24 @@ Screen1ViewBase::Screen1ViewBase() :
     __background.setPosition(0, 0, 800, 480);
     __background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    bkgImage.setBitmap(touchgfx::Bitmap(BITMAP_D3_MT8100IE_AC_SYSTEM_ID));
+    bkgImage.setBitmap(touchgfx::Bitmap(BITMAP_BKG800X480_ID));
     bkgImage.setPosition(0, 0, 800, 480);
     bkgImage.setOffset(0, 0);
 
+    mqttClientAppBtn.setBitmaps(Bitmap(BITMAP_MQTT100_100_ID), Bitmap(BITMAP_MQTT100_100_ID));
+    mqttClientAppBtn.setBitmapXY(0, -8);
+    mqttClientAppBtn.setText(TypedText(T_SINGLEUSEID14));
+    mqttClientAppBtn.setTextPosition(0, 77, 100, 115);
+    mqttClientAppBtn.setTextColors(touchgfx::Color::getColorFrom24BitRGB(247, 247, 247), touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    mqttClientAppBtn.setPosition(25, 65, 100, 115);
+    mqttClientAppBtn.setAction(flexButtonCallback);
+
     wifiSlideMenu.setup(touchgfx::SlideMenu::SOUTH,
-        touchgfx::Bitmap(BITMAP_D3_MT8100IE_AC_SYSTEM_ID),
+        touchgfx::Bitmap(BITMAP_BKG800X480_ID),
         touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_LARGE_ID),
         touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_LARGE_PRESSED_ID),
         0, 0, 213, 420);
-    wifiSlideMenu.setState(touchgfx::SlideMenu::EXPANDED);
+    wifiSlideMenu.setState(touchgfx::SlideMenu::COLLAPSED);
     wifiSlideMenu.setVisiblePixelsWhenCollapsed(40);
     wifiSlideMenu.setHiddenPixelsWhenExpanded(0);
     wifiSlideMenu.setAnimationEasingEquation(touchgfx::EasingEquations::cubicEaseInOut);
@@ -145,6 +155,7 @@ Screen1ViewBase::Screen1ViewBase() :
 
     add(__background);
     add(bkgImage);
+    add(mqttClientAppBtn);
     add(wifiSlideMenu);
     add(connectAPModalWindow);
 }
@@ -155,6 +166,21 @@ void Screen1ViewBase::setupScreen()
     for (int i = 0; i < wifiScrollListListItems.getNumberOfDrawables(); i++)
     {
         wifiScrollListListItems[i].initialize();
+    }
+}
+
+void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+}
+
+void Screen1ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &mqttClientAppBtn)
+    {
+        //startMqttClientApp
+        //When mqttClientAppBtn clicked change screen to mqttClientApp
+        //Go to mqttClientApp with no screen transition
+        application().gotomqttClientAppScreenNoTransition();
     }
 }
 

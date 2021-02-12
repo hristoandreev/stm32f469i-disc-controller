@@ -160,12 +160,6 @@
     <Filter Include="Source Files\gui\common">
       <UniqueIdentifier>793B84B5-0B9D-1DB0-005B-1D24DA8666AE</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen1_screen">
-      <UniqueIdentifier>5B2489F4-D8F1-5599-EDA0-8C01AFFC52EA</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen1_screen">
-      <UniqueIdentifier>137AE33D-B398-DD80-6BEE-61BED52C3E7F</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\generated\gui_generated\common">
       <UniqueIdentifier>648F9514-C95B-C78D-D2AF-85AE4AA7B952</UniqueIdentifier>
     </Filter>
@@ -183,6 +177,24 @@
     </Filter>
     <Filter Include="Header Files\generated\gui_generated\containers">
       <UniqueIdentifier>E748AA40-33C6-F917-8AEA-0AD11C123657</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\mqttclientapp_screen">
+      <UniqueIdentifier>EF315350-B73D-D8B1-9F48-2C9EEE53704D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\mqttclientapp_screen">
+      <UniqueIdentifier>8F8BA283-3E29-A711-3EAC-833642B049A6</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\mqttclientapp_screen">
+      <UniqueIdentifier>0A493A61-ADC2-F37A-6E10-E8DB97488ECB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\mqttclientapp_screen">
+      <UniqueIdentifier>6693B295-C7C9-13FA-85E0-B80A335C09F1</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen1_screen">
+      <UniqueIdentifier>BBB70F0D-2001-BB87-7810-09A91151C0AB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen1_screen">
+      <UniqueIdentifier>893C0E8F-08C7-464E-A39D-90F7AAE2203B</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -219,13 +231,37 @@
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp">
       <Filter>Source Files\gui\screen1_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen1_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\wifiItemContainer.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\wifiItemContainerBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\mqttclientapp_screen\mqttClientAppPresenter.cpp">
+      <Filter>Source Files\gui\mqttclientapp_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\mqttclientapp_screen\mqttClientAppView.cpp">
+      <Filter>Source Files\gui\mqttclientapp_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\mqttclientapp_screen\mqttClientAppViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\mqttclientapp_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen1_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\common\CustomKeyboard.cpp">
+      <Filter>Source Files\gui\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\longEditContainer.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\longEditContainerBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\shortEditContainer.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\shortEditContainerBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -664,9 +700,6 @@
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp">
       <Filter>Header Files\gui\screen1_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen1_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp">
       <Filter>Header Files\generated\gui_generated\common</Filter>
     </ClInclude>
@@ -674,6 +707,39 @@
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\wifiItemContainerBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\mqttclientapp_screen\mqttClientAppPresenter.hpp">
+      <Filter>Header Files\gui\mqttclientapp_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\mqttclientapp_screen\mqttClientAppView.hpp">
+      <Filter>Header Files\gui\mqttclientapp_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\mqttclientapp_screen\mqttClientAppViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\mqttclientapp_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen1_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\common\CustomKeyboard.hpp">
+      <Filter>Header Files\gui\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\common\KeyboardKeyMapping.hpp">
+      <Filter>Header Files\gui\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\common\KeyboardLayout.hpp">
+      <Filter>Header Files\gui\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\longEditContainer.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\longEditContainerBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\shortEditContainer.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\shortEditContainerBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>

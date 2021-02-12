@@ -22,9 +22,17 @@
     <ClCompile Include="..\..\gui\src\model\Model.cpp"/>
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\wifiItemContainer.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\wifiItemContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\mqttclientapp_screen\mqttClientAppPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\mqttclientapp_screen\mqttClientAppView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\mqttclientapp_screen\mqttClientAppViewBase.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\common\CustomKeyboard.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\longEditContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\longEditContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\shortEditContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\shortEditContainerBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -173,10 +181,20 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1Presenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\wifiItemContainer.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\wifiItemContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\mqttclientapp_screen\mqttClientAppPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\mqttclientapp_screen\mqttClientAppView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\mqttclientapp_screen\mqttClientAppViewBase.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\common\CustomKeyboard.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\common\KeyboardKeyMapping.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\common\KeyboardLayout.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\longEditContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\longEditContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\shortEditContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\shortEditContainerBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

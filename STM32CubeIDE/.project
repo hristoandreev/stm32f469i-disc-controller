@@ -1400,9 +1400,24 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/target/generated/TouchGFXGeneratedHAL.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/CustomKeyboard.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/common/CustomKeyboard.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/FrontendApplication.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/common/FrontendApplication.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/longEditContainer.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/containers/longEditContainer.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/shortEditContainer.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/containers/shortEditContainer.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/gui/wifiItemContainer.cpp</name>
@@ -1413,6 +1428,16 @@
 			<name>Application/User/gui/Model.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/model/Model.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/mqttClientAppPresenter.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/mqttclientapp_screen/mqttClientAppPresenter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/mqttClientAppView.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/gui/src/mqttclientapp_screen/mqttClientAppView.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/gui/Screen1Presenter.cpp</name>
@@ -1440,9 +1465,34 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/FontCache.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Font_verdanab_15_4bpp_0.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdanab_15_4bpp_0.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Font_verdanab_20_4bpp_0.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdanab_20_4bpp_0.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Font_verdanab_40_4bpp_0.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdanab_40_4bpp_0.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Font_verdanab_40_4bpp_4.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdanab_40_4bpp_4.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Font_verdanab_60_4bpp_0.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdanab_60_4bpp_0.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Font_verdanab_60_4bpp_4.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdanab_60_4bpp_4.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Font_verdana_10_4bpp_0.cpp</name>
@@ -1460,6 +1510,11 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdana_30_4bpp_0.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Font_verdana_30_4bpp_4.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdana_30_4bpp_4.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Font_verdana_40_4bpp_0.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Font_verdana_40_4bpp_0.cpp</locationURI>
@@ -1470,9 +1525,24 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/GeneratedFont.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Kerning_verdanab_15_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdanab_15_4bpp.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Kerning_verdanab_20_4bpp.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdanab_20_4bpp.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Kerning_verdanab_40_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdanab_40_4bpp.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Kerning_verdanab_60_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdanab_60_4bpp.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Kerning_verdana_10_4bpp.cpp</name>
@@ -1495,9 +1565,24 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Kerning_verdana_40_4bpp.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/Table_verdanab_15_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_verdanab_15_4bpp.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/Table_verdanab_20_4bpp.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_verdanab_20_4bpp.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Table_verdanab_40_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_verdanab_40_4bpp.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/Table_verdanab_60_4bpp.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/fonts/src/Table_verdanab_60_4bpp.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Table_verdana_10_4bpp.cpp</name>
@@ -1530,9 +1615,24 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/longEditContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/containers/longEditContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/shortEditContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/containers/shortEditContainerBase.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/wifiItemContainerBase.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/containers/wifiItemContainerBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/mqttClientAppViewBase.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/gui_generated/src/mqttclientapp_screen/mqttClientAppViewBase.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/Screen1ViewBase.cpp</name>
@@ -1545,9 +1645,59 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/BitmapDatabase.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_D3_MT8100iE_AC_System.cpp</name>
+			<name>Application/User/generated/image_bkg800x480.cpp</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_D3_MT8100iE_AC_System.cpp</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_bkg800x480.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboard_background.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_keyboard_background.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboard_key_cancel_highlighted.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_keyboard_key_cancel_highlighted.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboard_key_delete_highlighted.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_keyboard_key_delete_highlighted.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboard_key_enter_highlighted.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_keyboard_key_enter_highlighted.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboard_key_highlighted.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_keyboard_key_highlighted.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboard_key_num_highlighted.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_keyboard_key_num_highlighted.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboard_key_punctuation_highlighted.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_keyboard_key_punctuation_highlighted.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboard_key_settings_highlighted.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_keyboard_key_settings_highlighted.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboard_key_shift_highlighted.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_keyboard_key_shift_highlighted.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_keyboard_space_highlighted.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_keyboard_space_highlighted.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_locked-padlock.cpp</name>
@@ -1558,6 +1708,11 @@
 			<name>Application/User/generated/image_modalWindowlBkg.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_modalWindowlBkg.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_mqtt100_100.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_mqtt100_100.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_wifi1_32x32.cpp</name>
@@ -1610,6 +1765,16 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/image_wifi5_64x64.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_Blue_Buttons_Round_Edge_icon_button.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Buttons_Round_Edge_icon_button.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Buttons_Round_Edge_icon_button_pressed.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Buttons_Round_Edge_icon_button_pressed.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_Blue_Buttons_Round_Edge_large.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Buttons_Round_Edge_large.cpp</locationURI>
@@ -1633,6 +1798,21 @@
 			<name>Application/User/generated/image_Blue_Check_buttons_Check_mark_normal.cpp</name>
 			<type>1</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Check_buttons_Check_mark_normal.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Icons_Add_new_32.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Icons_Add_new_32.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Icons_Back_arrow_48.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Icons_Back_arrow_48.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Blue_Icons_Remove_32.cpp</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/TouchGFX/generated/images/src/__designer/image_Blue_Icons_Remove_32.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_Blue_ProgressIndicators_bg_small_circle_indicator_bg_line_full.cpp</name>

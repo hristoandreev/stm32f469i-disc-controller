@@ -12,6 +12,8 @@
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/Model.hpp>
 
+#include <gui/mqttclientapp_screen/mqttClientAppView.hpp>
+#include <gui/mqttclientapp_screen/mqttClientAppPresenter.hpp>
 #include <gui/screen1_screen/Screen1View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 
@@ -36,8 +38,9 @@ public:
      * A list of all view types. Must end with meta::Nil.
      * @note All view types used in the application MUST be added to this list!
      */
-    typedef touchgfx::meta::TypeList< Screen1View,
-            touchgfx::meta::Nil
+    typedef touchgfx::meta::TypeList< mqttClientAppView,
+            touchgfx::meta::TypeList< Screen1View,
+            touchgfx::meta::Nil >
             > GeneratedViewTypes;
 
     /**
@@ -49,8 +52,9 @@ public:
      * A list of all presenter types. Must end with meta::Nil.
      * @note All presenter types used in the application MUST be added to this list!
      */
-    typedef touchgfx::meta::TypeList< Screen1Presenter,
-            touchgfx::meta::Nil
+    typedef touchgfx::meta::TypeList< mqttClientAppPresenter,
+            touchgfx::meta::TypeList< Screen1Presenter,
+            touchgfx::meta::Nil >
             > GeneratedPresenterTypes;
 
     /**

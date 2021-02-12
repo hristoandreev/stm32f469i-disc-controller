@@ -15,6 +15,9 @@ public:
     FrontendApplicationBase(Model& m, FrontendHeap& heap);
     virtual ~FrontendApplicationBase() { }
 
+    // mqttClientApp
+    void gotomqttClientAppScreenNoTransition();
+
     // Screen1
     void gotoScreen1ScreenNoTransition();
 
@@ -22,6 +25,9 @@ protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
     Model& model;
+
+    // mqttClientApp
+    void gotomqttClientAppScreenNoTransitionImpl();
 
     // Screen1
     void gotoScreen1ScreenNoTransitionImpl();
