@@ -3,13 +3,15 @@
 #include <string>
 #include <BitmapDatabase.hpp>
 #include "modalMessage.h"
+#include <texts/TextKeysAndLanguages.hpp>
 
 #ifndef SIMULATOR
 #include "cJSON.h"
 #endif
 
 Screen1View::Screen1View() :
-    scrollListItemSelectedCallback(this, &Screen1View::scrollListItemSelectedHandler)
+    scrollListItemSelectedCallback(this, &Screen1View::scrollListItemSelectedHandler),
+    message(BITMAP_MODALWINDOWLBKG_ID, BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID, BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID)
 {
     wifiScrollList.setItemSelectedCallback(scrollListItemSelectedCallback);
     message.setPosition(0, 0, 800, 480);
@@ -22,6 +24,9 @@ void Screen1View::setupScreen()
 //    setItemSelectedCallback(updateApScanningProgress);
 //    wifiScanningProgress.setVisible(false);
 //    wifiScanningProgress.setStartEndAngle(0, 720);
+//    message.showOk(T_SINGLEUSEID12, T_SINGLEUSEID12, T_SINGLEUSEID10);
+    message.showOkCancel(T_SINGLEUSEID12, T_SINGLEUSEID12,
+                         T_SINGLEUSEID10, T_SINGLEUSEID9, nullptr);
 }
 
 void Screen1View::tearDownScreen()
@@ -124,7 +129,7 @@ void Screen1View::scrollListItemSelectedHandler(int16_t itemSelected) {
 //    title.resizeToCurrentText();
 //    connectAPModalWindow.show();
 //    connectAPModalWindow.invalidate();
-    message.show("Puu deeba", "Mama mu deeba!");
+//    message.show("Puu deeba", "Mama mu deeba!");
 }
 /*
  * "{\"status\":\"success\",
